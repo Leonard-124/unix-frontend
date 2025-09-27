@@ -16,8 +16,7 @@ createRoot(document.getElementById('root')).render(
     domain={authConfig.domain}
     clientId={authConfig.clientId}
     authorizationParams={{
-      redirect_uri: "https://unix-delta.vercel.app/" + "/callback",
-      // redirect_uri: window.location.origin + "/callback",
+      redirect_uri: window.location.origin + "/callback",
       audience: authConfig.audience
     }}
   >
