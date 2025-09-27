@@ -35,7 +35,7 @@ export default function CallbackPage() {
 
         const token = await getAccessTokenSilently();
         await axios.post(
-          "http://localhost:3000/api/users/sync",
+          "https://unix.up.railway.app/api/users/users",
           {},
           { headers: { Authorization: `Bearer ${token}` } }
         );

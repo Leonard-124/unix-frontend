@@ -1,136 +1,233 @@
 
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-// import { useState } from 'react'
 
-// const Navbar = () => {
-  
-
-//   return (
-//     <div className='fixed top-0 left-0 right-0 z-50 flex bg-gray-300 justify-between h-20 font-[500] text-[21px] tracking-[-1px] items-center italic  transform-3d'>
-//       <div>
-//         <h1 className='underline underline-offset-[3px] tracking-[-2px] text-[30px] text-red-500 ml-5'>UnIx</h1>
-//         </div>
-//         <div className='mr-6'>
-//             <Link to="/davinci" className='m-5 hover:underline' >DavinCi</Link>
-//             <Link to="/Explore" className='m-5 hover:underline' >Explore</Link>
-//             <Link to="/Shop" className='m-5 hover:underline'>Shop</Link>
-//             <Link to="/profile" className='m-5 hover:underline'>Account</Link>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Navbar
-//////////////////////////////////////////////////////////////////////////
-
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-
-// const Navbar = () => {
-//   return (
-//     <div className=' bg-[#f8eaea] pb-3 fixed top-0 left-0 right-0 z-50  transform-3d shadow-md'>
-//       <div className='flex flex-col gap-0 mb-0'>
-//         <div className='flex justify-between'>
-//           <div className='flex gap-6 items-center'>
-//         <h1 className='font-[var(--font-libertinus)] tracking-[1px] text-4xl underline m'>UnIx</h1>
-//         <input type="text" placeholder="Search..." 
-//         className='border border-gray-300 rounded-md px-3 focus:outline-none focus:ring-2 focus:ring-gray-200 w-full'
-//         />
-//           </div>
-//         <div className='flex gap-8 text-[18px] mt-3 font-light'>
-//         <Link to="/whats-new">What's New</Link>
-//         <Link to="/photography">Photography</Link>
-//         <Link to="/inventions">Inventions</Link>
-//         <Link to="/artistinventor"> Artists & <br />Inventors</Link>
-//         <Link to="/buy">Buy</Link>
-//         <Link to="/login">Login</Link>
-//         <Link to="/signup">Sign Up</Link>
-//         </div>
-//       </div>
-//       <div className='flex gap-4 text-[18px] mt-3 font-light leading-0.5'>
-//         <Link to="/artworks">Artworks</Link>
-//         <Link to="/editorial">Editorial</Link>
-//         <Link to="/artifacts">Artifacts</Link>
-//         <Link to="/galleries">Galleries</Link>
-//       </div>
-//       </div>
-
-//     </div>
-//   )
-// }
-
-// export default Navbar
-
-
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { HiMenu, HiX } from "react-icons/hi";
+import search from "../assets/Arts/search.png"
 
 const Navbar = () => {
   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
   const location = useLocation();
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Store current page before login so we can redirect back
   const handleLogin = () => {
     sessionStorage.setItem("returnTo", location.pathname);
     loginWithRedirect();
   };
 
-  // Force signup flow and always go to /profile after signup
   const handleSignUp = () => {
     loginWithRedirect({
-      screen_hint: 'signup',
-      appState: { returnTo: '/profile' }
+      screen_hint: "signup",
+      appState: { returnTo: "/profile" },
     });
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+      setSearchTerm("");
+      setMenuOpen(false);
+    }
+  };
+
+  // Helper: get initials from user name
+  const getInitials = (name) => {
+    if (!name) return "P";
+    const parts = name.trim().split(" ");
+    if (parts.length === 1) return parts[0][0].toUpperCase();
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  };
+
+  // Helper: active link styling
+  const linkClasses = (path) =>
+    `relative transition-all duration-200 ${
+      location.pathname === path
+        ? "text-red-600 -translate-y-1 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-red-600"
+        : "text-gray-700 hover:text-red-500"
+    }`;
+
   return (
-    <div className='bg-[#f8eaea] pb-3 fixed top-0 left-0 right-0 z-50 shadow-md'>
-      <div className='flex flex-col gap-0 mb-0'>
-        <div className='flex justify-between'>
-          <div className='flex gap-6 items-center'>
-            <h1 className='font-[var(--font-libertinus)] tracking-[1px] text-4xl underline'>UnIx</h1>
-            <input
-              type="text"
-              placeholder="Search..."
-              className='border border-gray-300 rounded-md px-3 focus:outline-none focus:ring-2 focus:ring-gray-200 w-full'
-            />
+    <nav className="bg-[#f8eaea] fixed top-0 left-0 right-0 z-50 shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top Row */}
+        <div className="flex justify-between items-center h-16">
+          {/* Logo + Search */}
+          <div className="flex items-center gap-4 flex-1">
+            <Link
+              to="/"
+              className="font-[var(--font-libertinus)] text-3xl sm:text-4xl underline"
+            >
+              UnIx
+            </Link>
+
+            {/* Desktop Search */}
+            {/* <form onSubmit={handleSearch} className="hidden sm:block flex-1">
+              <input
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="border border-gray-300 rounded-md px-3 py-1 w-full focus:outline-none focus:ring-2 focus:ring-gray-200"
+                
+              />
+            </form> */}
+              <form onSubmit={handleSearch} className="hidden sm:block flex-1">
+              <div className="relative w-full">
+                {/* Search Icon/Image */}
+                <img
+                  src={search} // replace with your image path
+                  alt="search"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
+                />
+
+                {/* Input */}
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="border border-gray-300 rounded-md pr-8  py-2 w-full focus:outline-none focus:ring-2 focus:ring-gray-200  "
+                />
+              </div>
+              </form>
           </div>
 
-          <div className='flex gap-8 text-[18px] mt-3 font-light'>
-            <Link to="/whats-new">What's New</Link>
-            <Link to="/photography">Photography</Link>
-            <Link to="/inventions">Inventions</Link>
-            <Link to="/artistinventor">Artists & <br />Inventors</Link>
-            <Link to="/buy">Buy</Link>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-6 text-[16px] font-light items-center">
+            <Link to="/whats-new" className={linkClasses("/whats-new")}>
+              What's New
+            </Link>
+            <Link to="/inventions" className={linkClasses("/inventions")}>
+              Inventions
+            </Link>
+            <Link
+              to="/artistinventor"
+              className={linkClasses("/artistinventor")}
+            >
+              Artists & Inventors
+            </Link>
+            <Link to="/buy" className={linkClasses("/buy")}>
+              Buy
+            </Link>
+            <Link to="/artworks" className={linkClasses("/artworks")}>
+              Artworks
+            </Link>
 
             {!isAuthenticated && (
               <>
-                <button onClick={handleLogin}>Login</button>
-                <button onClick={handleSignUp}>Sign Up</button>
+                <button
+                  onClick={handleLogin}
+                  className="px-3 py-1 border rounded hover:bg-gray-100"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={handleSignUp}
+                  className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800"
+                >
+                  Sign Up
+                </button>
               </>
             )}
 
             {isAuthenticated && (
               <>
-                <Link to="/profile">{user?.name || 'Profile'}</Link>
-                <button onClick={() => logout({ returnTo: window.location.origin })}>
+                <Link
+                  to="/profile"
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-white font-bold"
+                >
+                  {getInitials(user?.name)}
+                </Link>
+                <button
+                  onClick={() => logout({ returnTo: window.location.origin })}
+                  className="px-3 py-1 border rounded hover:bg-gray-100"
+                >
                   Logout
                 </button>
               </>
             )}
           </div>
+
+          {/* Mobile Hamburger */}
+          <div className="md:hidden">
+            <button onClick={() => setMenuOpen(!menuOpen)}>
+              {menuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+            </button>
+          </div>
         </div>
 
-        <div className='flex gap-4 text-[18px] mt-3 font-light'>
-          <Link to="/artworks">Artworks</Link>
-          <Link to="/editorial">Editorial</Link>
-          <Link to="/artifacts">Artifacts</Link>
-          <Link to="/galleries">Galleries</Link>
-        </div>
+        {/* Mobile Search */}
+        <form onSubmit={handleSearch} className="sm:hidden mt-2">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="border border-gray-300 rounded-md px-3 py-1 w-full focus:outline-none focus:ring-2 focus:ring-gray-200"
+          />
+        </form>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden flex flex-col gap-3 mt-3 pb-4 text-[16px] font-light">
+            <Link to="/whats-new" onClick={() => setMenuOpen(false)}>
+              What's New
+            </Link>
+            <Link to="/inventions" onClick={() => setMenuOpen(false)}>
+              Inventions
+            </Link>
+            <Link to="/artistinventor" onClick={() => setMenuOpen(false)}>
+              Artists & Inventors
+            </Link>
+            <Link to="/buy" onClick={() => setMenuOpen(false)}>
+              Buy
+            </Link>
+            <Link to="/artworks" onClick={() => setMenuOpen(false)}>
+              Artworks
+            </Link>
+
+            {!isAuthenticated && (
+              <>
+                <button
+                  onClick={handleLogin}
+                  className="px-3 py-1 border rounded hover:bg-gray-100"
+                >
+                  Login
+                </button>
+                <button
+                  onClick={handleSignUp}
+                  className="px-3 py-1 bg-black text-white rounded hover:bg-gray-800"
+                >
+                  Sign Up
+                </button>
+              </>
+            )}
+
+            {isAuthenticated && (
+              <>
+                <Link
+                  to="/profile"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 text-white font-bold"
+                >
+                  {getInitials(user?.name)}
+                </Link>
+                <button
+                  onClick={() => logout({ returnTo: window.location.origin })}
+                  className="px-3 py-1 border rounded hover:bg-gray-100"
+                >
+                  Logout
+                </button>
+              </>
+            )}
+          </div>
+        )}
       </div>
-    </div>
+    </nav>
   );
 };
 

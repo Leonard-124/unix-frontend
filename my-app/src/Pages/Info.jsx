@@ -1,52 +1,9 @@
 
-// import React from 'react'
-// import burger2 from "../assets/images/burger2.jpg"
-// import bike from "../assets/images/bike.jpg"
-// import ferari from "../assets/images/ferari.jpg"
-// import { useState, useEffect } from 'react'
-
-
-
-
-// const Info = () => {
-//   const images = [burger2, bike, ferari]
-//   const [currentImage, setCurrentImage] = useState(0)
-
-//   useEffect(()=>{
-//     const interval = setInterval(()=>{
-//       setCurrentImage((prev)=> (prev +1) % images.length)
-//     },4000)
-//     return ()=> clearInterval(interval)
-//   },[images.length])
-  
-
-//   return (
-//     <div className='flex  items-center bg-amber-50 '>
-//         <div className=''>
-//       <img src={images[currentImage]} alt={`slideshow ${currentImage + 1}`}  className='h-[650px] w-[1000px] object-cover mb-2'/>
-      
-//     </div>
-//     <div>
-//         <p className=' text-center font-serif'>
-//             We are at the top of the global village to bring you services
-// closer to your doorstep than ever before. We have a dedicated
-// team that  we'll ensure that you have been served to our level
-// best, we wish tou a good time as you will be exploring various
-// tools within the website.
-//         </p>
-//     </div>
-//     </div>
-    
-
-//   )
-// }
-
-// export default Info
-
-
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import hague from "../assets/Arts/hague.jpg";
 import cottonbro from "../assets/Arts/cottonbro.jpg";
+import googledeep from "../assets/Arts/googledeepmind.jpg"
 
 const slides = [
   {
@@ -61,7 +18,7 @@ const slides = [
   },
   {
     text: "City Skyline at Night",
-    image: hague,
+    image: googledeep,
     link: "https://example.com/city",
   },
 ];
@@ -72,9 +29,7 @@ const Info = () => {
   const intervalRef = useRef(null);
 
   const advanceSlide = useCallback((direction = 1) => {
-    setCurrentIndex((prev) =>
-      (prev + direction + slides.length) % slides.length
-    );
+    setCurrentIndex((prev) => (prev + direction + slides.length) % slides.length);
   }, []);
 
   const startAutoPlay = useCallback(() => {
@@ -107,22 +62,22 @@ const Info = () => {
 
   return (
     <div
-      className="flex flex-col gap-4 mx-auto p-4 h-[400px] w-full mt-22"
+      className="flex flex-col gap-4 mx-auto p-4 w-full max-w-7xl mt-20"
       onMouseEnter={stopAutoPlay}
       onMouseLeave={startAutoPlay}
     >
-      <div className="flex flex-row justify-between items-center gap-6 bg-[#ffffff73] transition-opacity duration-1000 opacity-100">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 bg-white/70 rounded-lg shadow-md p-4">
         {/* Left Arrow */}
         <button
-          className="text-2xl p-2 hover:text-blue-500 transition"
+          className="text-3xl p-2 hover:text-blue-500 transition md:self-center"
           onClick={() => advanceSlide(-1)}
         >
-          ⬅
+          <HiChevronLeft />
         </button>
 
         {/* Text + Link */}
-        <div className="flex flex-col items-center justify-center w-[300px]">
-          <p className="text-lg font-semibold text-gray-800">
+        <div className="flex flex-col items-center justify-center md:w-1/3 text-center">
+          <p className="text-lg md:text-xl font-semibold text-gray-800 mb-2">
             {slides[currentIndex].text}
           </p>
           <a
@@ -136,29 +91,29 @@ const Info = () => {
         </div>
 
         {/* Image + Right Arrow */}
-        <div className="flex items-center">
-          <div className="h-[400px] w-[900px] overflow-hidden">
+        <div className="flex items-center w-full md:w-2/3">
+          <div className="relative w-full h-64 sm:h-80 md:h-[400px] overflow-hidden rounded-md">
             <img
               src={slides[currentIndex].image}
               alt={slides[currentIndex].text}
-              className="w-full h-full object-cover shadow-md transition-opacity duration-1000 opacity-100"
+              className="w-full h-full object-cover transition-opacity duration-1000"
             />
           </div>
           <button
-            className="text-2xl p-2 hover:text-blue-500 transition"
+            className="text-3xl p-2 hover:text-blue-500 transition md:self-center"
             onClick={() => advanceSlide(1)}
           >
-            ➡
+            <HiChevronRight />
           </button>
         </div>
       </div>
 
-      {/* Progress Lines */}
+      {/* Progress Dots */}
       <div className="flex gap-2 mt-2 justify-center">
         {slides.map((_, index) => (
           <div
             key={index}
-            className={`h-1 w-12 rounded-full transition-colors duration-1000 ${
+            className={`h-2 w-8 sm:w-12 rounded-full transition-colors duration-500 ${
               index === currentIndex ? "bg-blue-500" : "bg-gray-300"
             }`}
           ></div>

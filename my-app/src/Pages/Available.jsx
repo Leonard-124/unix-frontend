@@ -1,68 +1,104 @@
 
 
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import hague from '../assets/Arts/hague.jpg'
-import octoptimist from '../assets/Arts/octoptimist.jpg'
-import nicigoten from '../assets/Arts/nicigoten.jpg'
-import oman from '../assets/Arts/oman.jpg'
-import robot from '../assets/Arts/robot.jpg'
-// import sonny from '../assets/Arts/sonny.jpg'
-// import suzyalwhood from '../assets/Arts/suzyalwhood.jpg'
 
-const image = [
-  { id: 1, src: hague, Artist: "John Jacob", title: "The Beauty of Nature", price: "$500", Link: "/Shop" },
-  { id: 2, src: octoptimist, Artist: "Jane Doe", title: "The Optimistic Octopus", price: "$600", Link: "/Shop" },
-  { id: 3, src: nicigoten, Artist: "Alice Smith", title: "The Serene Landscape", price: "$700", Link: "/Shop" },
-  { id: 4, src: oman, Artist: "Bob Johnson", title: "The Majestic Mountains", price: "$800", Link: "/Shop" },
-  { id: 5, src: robot, Artist: "Charlie Brown", title: "The Futuristic Robot", price: "$900", Link: "/Shop" },
-]
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Available = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    const images = document.querySelectorAll('.hover-image')
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("https://unix.up.railway.app/api/art"); // your backend endpoint
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const result = await res.json();
 
-    images.forEach(img => {
-      img.addEventListener('mousemove', (e) => {
-        const rect = img.getBoundingClientRect()
-        const x = e.clientX - rect.left - rect.width / 2
-        const y = e.clientY - rect.top - rect.height / 2
-        img.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px)`
-      })
+        // Only take the first 5 items
+        setData(result.slice(0, 4));
+      } catch (err) {
+        console.error("Failed to fetch:", err.message);
+        setError("Failed to load artworks.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      img.addEventListener('mouseleave', () => {
-        img.style.transform = 'translate(0, 0)'
-      })
-    })
+    fetchData();
+  }, []);
 
-    return () => {
-      images.forEach(img => {
-        img.removeEventListener('mousemove', () => {})
-        img.removeEventListener('mouseleave', () => {})
-      })
-    }
-  }, [])
+  // Hover effect logic
+  useEffect(() => {
+    const images = document.querySelectorAll(".hover-image");
+
+    images.forEach((img) => {
+      const handleMove = (e) => {
+        const rect = img.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        img.style.transform = `translate(${x * 0.05}px, ${y * 0.05}px)`;
+      };
+
+      const handleLeave = () => {
+        img.style.transform = "translate(0, 0)";
+      };
+
+      img.addEventListener("mousemove", handleMove);
+      img.addEventListener("mouseleave", handleLeave);
+
+      return () => {
+        img.removeEventListener("mousemove", handleMove);
+        img.removeEventListener("mouseleave", handleLeave);
+      };
+    });
+  }, [data]);
 
   return (
-    <div>
-      <h1 className='text-center font-bold text-2xl'>Available For You</h1>
-      <div className='flex flex-wrap gap-2 justify-center mt-5 mb-10 '>
-        {image.map(item => (
-          <div key={item.id} className='rounded hover:scale-105 transition-transform duration-300 ease-out will-change-transform h-[300px] w-64 m-2 bg-[#f8f7f7]'>
-            <img
-              src={item.src}
-              alt={item.title}
-              className='hover-image w-full h-[220px] object-cover transition-transform duration-300 ease-out will-change-transform'
-            />
-            <h2 className='font-bold'>{item.title}</h2>
-            <p className='text-gray-600'>{item.Artist}</p>
-            <p className='text-lg tracking-[0.5px]'>From: {item.price}</p>
-            <Link to={item.Link} className='text-blue-500 hover:underline'>View Details</Link>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
+    <section className="py-10 bg-gray-50">
+      <h1 className="text-center font-bold text-2xl sm:text-3xl mb-8">
+        Available For You
+      </h1>
 
-export default Available
+      {loading && <p className="text-center">Loading...</p>}
+      {error && <p className="text-center text-red-500">{error}</p>}
+
+      {!loading && !error && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:px-8 lg:px-16">
+          {data.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow hover:shadow-lg hover:scale-105 transition-transform duration-300 ease-out overflow-hidden"
+            >
+              {/* Image */}
+              <div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden">
+                <img
+                  src={item.image} // assuming backend returns `image` field
+                  alt={item.title}
+                  className="hover-image w-full h-full object-cover transition-transform duration-300 ease-out"
+                />
+              </div>
+
+              {/* Info */}
+              <div className="p-4 text-center">
+                <h2 className="font-bold text-lg">{item.title}</h2>
+                <p className="text-gray-600">{item.artist}</p>
+                <p className="text-lg font-medium mt-1">From: {item.price}</p>
+                <Link
+                  to={`/view/${item._id}`}
+                  className="inline-block mt-2 text-blue-600 hover:underline font-medium"
+                >
+                  View Details
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+};
+
+export default Available;
