@@ -63,7 +63,7 @@ const Feedback = () => {
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Write your feedback..."
+              placeholder="Or email me at leonardoduor91@gmail.com..."
               className="w-full border rounded px-3 py-2 h-24 resize-none focus:ring-2 focus:ring-blue-400 outline-none"
             />
 
