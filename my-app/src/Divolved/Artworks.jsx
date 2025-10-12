@@ -93,7 +93,7 @@ const Artworks = () => {
 
   const fetchArtworks = async () => {
     try {
-      const res = await fetch("https://unix.up.railway.app/api/art"); // adjust if deployed
+      const res = await fetch("http://localhost:3000/api/art"); // adjust if deployed
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const result = await res.json();
 
