@@ -58,7 +58,7 @@ const Available = () => {
 
   return (
     <section className="py-10 bg-gray-50">
-      <h1 className="text-center font-bold text-2xl sm:text-3xl mb-8">
+      <h1 className="text-center text-red-500 font-bold text-2xl sm:text-3xl mb-8">
         Available For You
       </h1>
 
@@ -88,7 +88,7 @@ const Available = () => {
                 <p className="text-lg font-medium mt-1">From: {item.price}</p>
                 <Link
                   to={`/view/${item._id}`}
-                  className="inline-block mt-2 text-blue-600 hover:underline font-medium"
+                  className="inline-block mt-2 text-red-500 hover:underline font-medium"
                 >
                   View Details
                 </Link>

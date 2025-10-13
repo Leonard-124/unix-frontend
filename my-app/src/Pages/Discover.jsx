@@ -27,11 +27,11 @@ import roman from "../assets/Arts/roman.jpg";
 const Discover = () => {
   return (
     <section className="mt-20 bg-[#f5f5f5] py-10">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 lg:px-12 gap-8">
+      <div className="container mx-auto flex flex-col md:flex-row  justify-between   gap-8">
         {/* Text Section */}
         <div className="flex-1 text-center md:text-left">
-          <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl leading-snug tracking-wide">
-            Discover and get Art <br />
+          <h1 className="font-semibold text-2xl sm:text-3xl lg:text-4xl leading-snug tracking-wide">
+          <span className="text-red-500 font-bold " >Discover</span>   and get Art <br />
             and designs that inspire <br />
             you only on Unix
           </h1>

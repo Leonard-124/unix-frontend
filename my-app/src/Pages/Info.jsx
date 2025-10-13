@@ -62,14 +62,14 @@ const Info = () => {
 
   return (
     <div
-      className="flex flex-col gap-4 mx-auto p-4 w-full max-w-7xl mt-20"
+      className="flex flex-col gap-4 mx-auto p-4 w-full container mt-20"
       onMouseEnter={stopAutoPlay}
       onMouseLeave={startAutoPlay}
     >
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 bg-white/70 rounded-lg shadow-md p-4">
         {/* Left Arrow */}
         <button
-          className="text-3xl p-2 hover:text-blue-500 transition md:self-center"
+          className="text-3xl hidden md:block p-2 hover:text-red-500 transition md:self-center"
           onClick={() => advanceSlide(-1)}
         >
           <HiChevronLeft />
@@ -84,15 +84,22 @@ const Info = () => {
             href={slides[currentIndex].link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-red-500 underline-offset-4 hover:underline"
           >
             Visit Link
           </a>
         </div>
+        
 
         {/* Image + Right Arrow */}
         <div className="flex items-center w-full md:w-2/3">
-          <div className="relative w-full h-64 sm:h-80 md:h-[400px] overflow-hidden rounded-md">
+        <button
+          className="text-3xl md:hidden p-2 hover:text-red-500 transition md:self-center"
+          onClick={() => advanceSlide(-1)}
+        >
+          <HiChevronLeft />
+        </button>
+          <div className="relative w-full h-64 sm:h-80 md:h-[500px] overflow-hidden rounded-md">
             <img
               src={slides[currentIndex].image}
               alt={slides[currentIndex].text}
@@ -100,7 +107,7 @@ const Info = () => {
             />
           </div>
           <button
-            className="text-3xl p-2 hover:text-blue-500 transition md:self-center"
+            className="text-3xl p-2 hover:text-red-500 transition md:self-center"
             onClick={() => advanceSlide(1)}
           >
             <HiChevronRight />
@@ -113,8 +120,8 @@ const Info = () => {
         {slides.map((_, index) => (
           <div
             key={index}
-            className={`h-2 w-8 sm:w-12 rounded-full transition-colors duration-500 ${
-              index === currentIndex ? "bg-blue-500" : "bg-gray-300"
+            className={`p-[6px] rounded-full   transition-colors duration-500 ${
+              index === currentIndex ? "bg-red-500" : "bg-gray-300"
             }`}
           ></div>
         ))}
