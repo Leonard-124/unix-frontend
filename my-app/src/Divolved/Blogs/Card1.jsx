@@ -8,15 +8,15 @@ const Card1 = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-28 px-4 sm:px-6 lg:px-12">
-        <h1 className="text-center text-2xl sm:text-3xl font-bold mb-10">
+      <div className="mt-16 py-10 px-4 sm:px-6 lg:px-12">
+        <h1 className="text-center text-red-500 text-2xl sm:text-3xl font-bold mb-10">
           Global Art Highlights 2025
         </h1>
 
         {/* Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Asia / Africa / Middle-East */}
-          <div className="bg-white rounded-lg shadow p-4 border">
+          <div className="bg-white rounded-lg  p-4 border-red-500/60 border">
             <div className="flex items-center gap-3 mb-4">
               <img
                 src={cottonbro}
@@ -46,7 +46,7 @@ const Card1 = () => {
           </div>
 
           {/* America */}
-          <div className="bg-white rounded-lg shadow p-4 border">
+          <div className="bg-white rounded-lg  p-4 border-red-500/60 border">
             <div className="flex items-center gap-3 mb-4">
               <img
                 src={cottonbro}
@@ -75,7 +75,7 @@ const Card1 = () => {
           </div>
 
           {/* Europe & UK */}
-          <div className="bg-white rounded-lg shadow p-4 border">
+          <div className="bg-white rounded-lg border-red-500/60 p-4 border">
             <div className="flex items-center gap-3 mb-4">
               <img
                 src={cottonbro}

@@ -1,14 +1,28 @@
-
-import { NavLink } from "react-router-dom"
+import { useAuth0 } from "@auth0/auth0-react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import React, { useState } from "react";
 import { HiMenu, HiX, HiSearch } from "react-icons/hi";
-
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [isAuthenticated] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState("/");
+   const { isAuthenticated, user, loginWithRedirect, logout } = useAuth0();
+
+  const handleLogin = () => {
+    sessionStorage.setItem("returnTo", location.pathname);
+    loginWithRedirect();
+  };
+
+  const handleSignUp = () => {
+    loginWithRedirect({
+      screen_hint: "signup",
+      appState: { returnTo: "/profile" },
+    });
+  };
+
 
   const handleNavClick = (page) => {
     setCurrentPage(page);
@@ -18,13 +32,14 @@ const Navbar = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      console.log("Searching for:", searchTerm);
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm("");
       setMenuOpen(false);
     }
   };
 
-  const getInitials = (name = "P") => {
+  const getInitials = (name) => {
+    if (!name) return "P";
     const parts = name.trim().split(" ");
     if (parts.length === 1) return parts[0][0].toUpperCase();
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
@@ -92,13 +107,13 @@ const Navbar = () => {
             {!isAuthenticated && (
               <div className="flex gap-3 ml-4 border-l border-gray-200 pl-4">
                 <button
-                  onClick={() => console.log("Login")}
+                  onClick={handleLogin}
                   className="px-4 py-2 text-gray-700 border border-gray-300 rounded-lg hover:border-red-500 hover:text-red-500 transition-colors duration-200"
                 >
                   Login
                 </button>
                 <button
-                  onClick={() => console.log("Sign Up")}
+                  onClick={handleSignUp}
                   className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
                 >
                   Sign Up
@@ -112,7 +127,7 @@ const Navbar = () => {
                   onClick={() => handleNavClick("/profile")}
                   className="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-semibold hover:bg-red-600 transition-colors duration-200"
                 >
-                  {getInitials()}
+                  {getInitials(user?.name)}
                 </button>
                 <button
                   onClick={() => console.log("Logout")}

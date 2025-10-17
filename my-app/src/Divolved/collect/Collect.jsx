@@ -1,64 +1,3 @@
-
-// import React from 'react'
-// import Navbar from '../../Pages/Navbar'
-// import { useParams } from 'react-router-dom'
-// import { Link } from 'react-router-dom'
-
-// const Collect = () => {
-//     const { id } = useParams()
-//     const data = artdata.find(d => d.id === Number(id))
-//     if(!data) {
-//         return <h1>Collectible Not Found</h1>
-//     }
-//     const numericPrice = Number(data.price.replace("$", ""));
-
-//     const fee =  0.05 * numericPrice
-//     const total = fee + numericPrice
-//   return (
-//     <>
-//     <Navbar/>
-//     <div className='mt-24'>
-//         <div>
-//             <p className='text-center text-xl font-bold tracking-tight'>Order details</p>
-//             <div className='mt-5'>
-//                 <hr />
-//                 <div className='flex justify-between mb-5 pb-5 m-1'>
-//                     <div>
-//                         <p>Price</p>
-//                         <p className='text-xl text-gray-600 font-mono'>{data.price}</p>
-//                     </div>
-//                     <div>
-//                         <p>Size</p>
-//                         <p>{data.size}</p>
-//                     </div>
-//                     <div className='w-[200px] h-[200px]'>
-//                         <p>Item</p>
-//                         <img src={data.src} alt="" 
-//                         className='w-full h-full object-cover m-1'
-//                         />
-//                     </div>
-//                 </div>
-//                 <hr />
-//                 <div className='flex flex-col gap-2 mb-2'>
-//                     <p className='text-gray-500'>Subtotal: {data.price}</p>
-//                     <p className='text-gray-500'>Delivery fee ${fee}</p>
-//                     <p className='text-gray-500'>Price to pay: ${total}</p>
-//                 </div>
-//                 <div>
-//                     <Link to={`/paystack-redirect/?id=${id}`} className='bg-red-500 text-white py-2 px-4 rounded m-2 hover:bg-red-400 '>Check out</Link>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-//     </>
-//   )
-// }
-
-// export default Collect
-
-////////////////////////////////////////////////////////////////
-
-
 import React, { useEffect, useState } from "react";
 import Navbar from "../../Pages/Navbar";
 import { useParams, Link } from "react-router-dom";
@@ -72,7 +11,7 @@ const Collect = () => {
   useEffect(() => {
     const fetchCollectible = async () => {
       try {
-        const res = await fetch(`https://unix.up.railway.app/api/art/${id}`);
+        const res = await fetch(`http://localhost:3000/api/art/${id}`);
         if (!res.ok) throw new Error(`Error: ${res.status}`);
         const result = await res.json();
         setData(result);
@@ -86,12 +25,28 @@ const Collect = () => {
   }, [id]);
 
   if (loading)
-    return <p className="text-center mt-24 text-gray-500">Loading...</p>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <p className="text-2xl font-bold text-black">Loading...</p>
+        </div>
+      </div>
+    );
   if (error)
-    return <p className="text-center mt-24 text-red-500">❌ {error}</p>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <p className="text-2xl font-bold text-red-500">❌ {error}</p>
+        </div>
+      </div>
+    );
   if (!data)
     return (
-      <p className="text-center mt-24 text-gray-500">Collectible Not Found</p>
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <p className="text-2xl font-bold text-black">Collectible Not Found</p>
+        </div>
+      </div>
     );
 
   // Ensure price is numeric for calculations
@@ -102,59 +57,108 @@ const Collect = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-24 px-4 sm:px-6 lg:px-12">
-        <div className="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
-          <h1 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">
-            Order Details
-          </h1>
+      <div className="min-h-screen bg-white pt-24 pb-20">
+        <div className="container mx-auto px-4 sm:px-8">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold text-black mb-2">
+              Order Details
+            </h1>
+            <div className="h-1 w-20 bg-red-500 mx-auto"></div>
+          </div>
 
-          {/* Item + Info */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
-            <div className="flex-1 text-center md:text-left">
-              <p className="text-gray-600 font-medium">Price</p>
-              <p className="text-xl text-gray-800 font-mono">{data.price}</p>
+          {/* Order Card */}
+          <div className="container mx-auto bg-white rounded-lg shadow-md border-2 border-black overflow-hidden">
+            {/* Item Details Section */}
+            <div className="p-6 sm:p-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                {/* Price Info */}
+                <div className="text-center md:text-left">
+                  <p className="text-xs font-bold uppercase tracking-widest text-black mb-2">
+                    Price
+                  </p>
+                  <p className="text-3xl font-bold text-red-500 font-mono">
+                    {data.price}
+                  </p>
+                </div>
+
+                {/* Size Info */}
+                <div className="text-center md:text-left">
+                  <p className="text-xs font-bold uppercase tracking-widest text-black mb-2">
+                    Size
+                  </p>
+                  <p className="text-xl font-semibold text-black">
+                    {data.size}
+                  </p>
+                </div>
+
+                {/* Item Image */}
+                <div className="flex flex-col items-center md:items-end">
+                  <p className="text-xs font-bold uppercase tracking-widest text-black mb-3">
+                    Item
+                  </p>
+                  <div className="w-48 h-48 rounded-lg shadow-md overflow-hidden border-2 border-black">
+                    <img
+                      src={data.image}
+                      alt={data.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="flex-1 text-center md:text-left">
-              <p className="text-gray-600 font-medium">Size</p>
-              <p className="text-lg text-gray-800">{data.size}</p>
-            </div>
+            {/* Divider */}
+            <div className="border-t-2 border-black"></div>
 
-            <div className="w-48 h-48 rounded-lg overflow-hidden shadow">
-              <img
-                src={data.image}
-                alt={data.name}
-                className="w-full h-full object-cover"
-              />
+            {/* Pricing Breakdown */}
+            <div className="p-6 sm:p-8 bg-white">
+              <div className="space-y-4 mb-8">
+                <div className="flex justify-between items-center py-2 border-b border-black">
+                  <p className="text-base font-semibold text-black">
+                    Subtotal
+                  </p>
+                  <p className="text-base font-mono text-black">{data.price}</p>
+                </div>
+                <div className="flex justify-between items-center py-2 border-b border-black">
+                  <p className="text-base font-semibold text-black">
+                    Delivery Fee (5%)
+                  </p>
+                  <p className="text-base font-mono text-black">
+                    ${fee.toFixed(2)}
+                  </p>
+                </div>
+                
+              </div>
+
+              <div className="flex gap-2">
+                <div className="w-full flex justify-between items-center py-4 bg-black px-4 rounded">
+                  <p className="text-lg font-bold text-white uppercase tracking-wide">
+                    Total to Pay
+                  </p>
+                  <p className="text-2xl font-bold text-red-500 font-mono">
+                    ${total.toFixed(2)}
+                  </p>
+                </div>
+
+                <Link
+                to={`/paystack-redirect/?id=${id}`}
+                className="w-full bg-red-500 text-white text-lg font-bold py-4 px-6 rounded hover:bg-red-600 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg text-center block"
+              >
+                Proceed to Checkout
+              </Link>
+              </div>
+
+              {/* Checkout Button */}
+              
             </div>
           </div>
 
-          <hr className="my-4" />
-
-          {/* Price Breakdown */}
-          <div className="flex justify-between">
-            <div className="space-y-2 text-gray-600 mb-6">
-            <p>
-              <span className="font-medium">Subtotal:</span> {data.price}
-            </p>
-            <p>
-              <span className="font-medium">Delivery fee:</span> $
-              {fee.toFixed(2)}
-            </p>
-            <p className="text-lg font-semibold text-gray-800">
-              Price to pay: ${total.toFixed(2)}
-            </p>
-          </div>
-          
-          {/* Checkout Button */}
-          <div className="text-center">
-            <Link
-              to={`/paystack-redirect/?id=${id}`}
-              className="inline-block bg-red-500 text-white px-6 py-3 rounded-lg text-lg font-medium hover:bg-red-600 transition mt-8"
-            >
-              Check Out
-            </Link>
-          </div>
+          {/* Additional Info */}
+          <div className="mt-8 text-center">
+            <div className="inline-block bg-black text-white py-3 px-6 rounded text-sm font-medium">
+              🔒 Secure payment powered by Paystack
+            </div>
           </div>
         </div>
       </div>

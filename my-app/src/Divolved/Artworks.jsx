@@ -85,7 +85,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Pages/Navbar";
-
+import BaseUrl from "../utils/BaseUrl";
+import LoadingSpinner from "../LoadingSpinner";
 const Artworks = () => {
   const [artworks, setArtworks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -93,7 +94,7 @@ const Artworks = () => {
 
   const fetchArtworks = async () => {
     try {
-      const res = await fetch("https://unix.up.railway.app/api/art"); // adjust if deployed
+      const res = await fetch(`${BaseUrl()}/api/art`); // adjust if deployed
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const result = await res.json();
 
@@ -115,7 +116,11 @@ const Artworks = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center mt-10 text-lg">Loading...</div>;
+    return <div className="">
+      <Navbar/>
+             <LoadingSpinner/>
+             <Footer/>
+           </div>;
   }
 
   if (error) {
@@ -126,7 +131,7 @@ const Artworks = () => {
     <>
     <Navbar/>
         <div className=" px-4 sm:px-6 lg:px-12 mt-24 mb-10">
-      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-10">
+      <h1 className="text-2xl sm:text-3xl text-red-500 font-bold text-center mb-10">
         Artworks
       </h1>
 
@@ -136,7 +141,7 @@ const Artworks = () => {
             <Link
               to={`/artworks/${item._id}`}
               key={item._id}
-              className="bg-white rounded-lg shadow hover:shadow-lg transition transform hover:scale-105 overflow-hidden flex flex-col"
+              className="bg-white rounded-lg border border-gray-200 hover:border-red-500/60 transition transform overflow-hidden flex flex-col"
             >
               {/* Image */}
               <div className="h-52 sm:h-56 md:h-60 lg:h-64 overflow-hidden">

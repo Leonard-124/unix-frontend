@@ -317,7 +317,7 @@ const PaystackRedirect = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const BASE_URL = "https://unix.up.railway.app"; // replace with your ngrok url
+  const BASE_URL = "http://localhost:3000"; // replace with your ngrok url
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -350,7 +350,7 @@ const PaystackRedirect = () => {
 
   const fetchArtPrice = async (id) => {
     try {
-      const res = await fetch(`https://unix.up.railway.app/api/art/${id}`);
+      const res = await fetch(`http://localhost:3000/api/art/${id}`);
       if (!res.ok) throw new Error(`Error fetching art: ${res.status}`);
       const data = await res.json();
 
@@ -458,8 +458,8 @@ const PaystackRedirect = () => {
             disabled={loading || !total}
             className={`w-full py-2 rounded text-white font-medium transition ${
               loading || !total
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-red-600 hover:bg-red-700"
+                ? "bg-black cursor-not-allowed"
+                : "bg-red-500 hover:bg-red-600"
             }`}
           >
             {loading

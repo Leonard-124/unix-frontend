@@ -49,6 +49,7 @@ import Paystackredirect from "./Divolved/collect/Paystackredirect";
 import Success from "./Shop/Cart/Success";
 import Paymentfail from "./Shop/Cart/ProductList/Paymentfail";
 import Order from "./Divolved/Orders/Order";
+import Posted from "./Divolved/Orders/Posted";
 
 const App = () => {
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
@@ -126,6 +127,7 @@ const App = () => {
       <Route path="/orders" element={<ProtectedRoute><Order /></ProtectedRoute>} />
       <Route path="/inventioncard/:id" element={<ProtectedRoute><Card /></ProtectedRoute>} />
       <Route path="/artworks/:id" element={<ProtectedRoute><Cardo /></ProtectedRoute>} />
+      <Route path="/myworks" element={<ProtectedRoute><Posted /></ProtectedRoute>} />
 
       {/* 404 */}
       <Route path="*" element={<h1 className="text-center text-2xl font-mono">Page Not Found</h1>} />

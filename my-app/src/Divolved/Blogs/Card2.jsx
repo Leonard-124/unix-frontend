@@ -52,8 +52,8 @@ const Card2 = () => {
   return (
     <>
       <Navbar />
-      <div className="mt-24 px-4 sm:px-6 lg:px-12">
-        <h1 className="text-center text-2xl sm:text-3xl font-bold mb-10">
+      <div className="mt-12 py-10 px-4 sm:px-6 lg:px-12">
+        <h1 className="text-center text-red-500 text-2xl sm:text-3xl font-bold mb-10">
           Top Artists in History
         </h1>
 
@@ -62,7 +62,7 @@ const Card2 = () => {
           {artists.map((artist, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow p-5 hover:shadow-lg transition"
+              className="bg-white rounded-lg shadow p-5 hover:shadow-md transition"
             >
               <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
                 {artist.name}

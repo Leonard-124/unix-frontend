@@ -1,11 +1,10 @@
-
-
 import React from "react";
 import hague from "../assets/Arts/hague.jpg";
 import cottonbro from "../assets/Arts/cottonbro.jpg";
 import bulb from "../assets/Arts/bulb.jpg";
 import fotios from "../assets/Arts/fotios.jpg";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 const images = [
   { id: 1, src: hague, text: "Best Art of 2025", link: "/card1" },
@@ -15,16 +14,52 @@ const images = [
 ];
 
 const Show = () => {
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <section className="mt-20  bg-[#ffffff] py-10">
-      <h1 className="text-center font-bold text-red-500 text-2xl sm:text-3xl mb-8">Featured</h1>
+    <section className="mt-20 bg-[#ffffff] py-10">
+      <motion.h1 
+        variants={headerVariants} 
+        initial="hidden" 
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        className="text-center font-bold text-red-500 text-2xl sm:text-3xl mb-8"
+      >
+        Featured
+      </motion.h1>
 
       {/* Responsive Grid */}
-      <div className="container mx-auto  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-8 lg:px-16">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-8 lg:px-16">
         {images.map((image) => (
-          <div
+          <motion.div 
             key={image.id}
-            className="bg-white rounded-lg shadow hover:shadow-md  transition-transform duration-300 overflow-hidden"
+            variants={cardVariants} 
+            initial="hidden" 
+            whileInView="visible" 
+            viewport={{ once: true, amount: 0.3 }}
+            className="bg-white rounded-lg shadow hover:shadow-md transition-transform duration-300 overflow-hidden"
           >
             {/* Image */}
             <div className="w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden">
@@ -44,10 +79,10 @@ const Show = () => {
                 href={image.link}
                 className="text-red-500 inline-flex items-center gap-2 hover:underline font-medium"
               >
-                View More <HiArrowRight/>
+                View More <HiArrowRight />
               </a>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -55,4 +90,3 @@ const Show = () => {
 };
 
 export default Show;
-

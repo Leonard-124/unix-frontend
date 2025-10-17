@@ -78,6 +78,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Pages/Navbar";
 import Footer from "../Components/Footer";
+import LoadingSpinner from "../LoadingSpinner";
 
 const Buy = () => {
   const [data, setData] = useState([]);
@@ -89,7 +90,7 @@ const Buy = () => {
       setLoading(true);
       setError(null);
 
-      const res = await fetch("https://unix.up.railway.app/api/art");
+      const res = await fetch("http://localhost:3000/api/art");
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
       }
@@ -112,12 +113,12 @@ const Buy = () => {
     <>
       <Navbar />
       <div className="mt-24 px-4 sm:px-6 lg:px-12 mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold text-red-500 text-center mb-6">
           Available for You
         </h1>
 
         {loading && (
-          <p className="text-center text-gray-500 mt-6">Loading...</p>
+          <p className="text-center text-gray-500 mt-6"><LoadingSpinner/> </p>
         )}
 
         {error && (
@@ -136,7 +137,7 @@ const Buy = () => {
               <Link
                 to={`/art/${item._id}`}
                 key={item._id}
-                className="rounded-lg bg-[#f7f4f4] shadow hover:shadow-lg transition transform hover:scale-105 overflow-hidden flex flex-col"
+                className="rounded-lg bg-[#f7f4f4]  transition transform border hover:border-red-400/60 border-gray-300 overflow-hidden flex flex-col"
               >
                 <div className="h-48 sm:h-56 md:h-60 lg:h-64 overflow-hidden">
                   <img
@@ -148,13 +149,13 @@ const Buy = () => {
 
                 <div className="p-4 flex flex-col justify-between flex-grow">
                   <div className="font-light tracking-tight text-gray-600 space-y-1">
-                    <p className="font-medium text-gray-800">{item.name}</p>
+                    <p className="text-xl text-red-500 font-bold">{item.name}</p>
                     <p className="text-sm">Size: {item.size}</p>
                   </div>
 
                   <div className="flex justify-between items-center text-sm sm:text-base font-medium mt-3">
-                    <p className="text-gray-600">Type: {item.type}</p>
-                    <span className="text-yellow-500">From: {item.price}</span>
+                    <p className="text-gray-600 text-lg">Type: {item.type}</p>
+                    <span className="text-green-500">From: {item.price}</span>
                   </div>
                 </div>
               </Link>
