@@ -27,7 +27,7 @@ import Inventions from "./Divolved/Inventions";
 import Card from "./Divolved/collect/Card";
 import Cardo from "./Divolved/collect/Cardo";
 import Artistinventor from "./Divolved/Artistinventor";
-import Artinvent from "./Divolved/Artinvent";
+//import Artinvent from "./Divolved/Artinvent";
 import Whatsnew from "./Divolved/Whatsnew";
 import Photography from "./Divolved/Photography";
 import Editorial from "./Divolved/Editorial";
@@ -41,6 +41,7 @@ import Coming_soon from "./Components/Coming_soon";
 import Checkout from "./Shop/Cart/Checkout/Checkout";
 import Gigc from "./Shop/Art/Gigc";
 import View from "./Pages/View";
+import Search from "./Divolved/Search";
 //import Checkoutnow from "./Shop/Art/checkoutnow";
 import Inventioncollect from "./Divolved/collect/Inventioncollect";
 import Artpost from "./Components/Explore/Artacc/Artpost";
@@ -48,8 +49,10 @@ import Trade from "./Components/Explore/Tradeacc/Trade";
 import Paystackredirect from "./Divolved/collect/Paystackredirect";
 import Success from "./Shop/Cart/Success";
 import Paymentfail from "./Shop/Cart/ProductList/Paymentfail";
-import Order from "./Divolved/Orders/Order";
+import Order from "./Divolved/Orders/Order"
 import Posted from "./Divolved/Orders/Posted";
+import CreatorProfile from "./Components/CreatorProfile";
+import Messages from "./Components/Messages";
 
 const App = () => {
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
@@ -109,6 +112,8 @@ const App = () => {
       <Route path="/editorial" element={<Editorial />} />
       <Route path="/buy" element={<Buy />} />
       <Route path="/artworks" element={<Artworks />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/creator/:username" element={<CreatorProfile />} />
       {/* <Route path="/paystack-redirect" element={<Paystackredirect />} /> */}
 
       {/* Auth0 callback route */}
@@ -121,13 +126,14 @@ const App = () => {
       <Route path="/buy/:id" element={<ProtectedRoute><Collect /></ProtectedRoute>} />
       <Route path="/art/:id" element={<ProtectedRoute><Artcard /></ProtectedRoute>} />
       <Route path="/artworkscard/:id" element={<ProtectedRoute><Artworkscard /></ProtectedRoute>} />
-      <Route path="/premium-service" element={<ProtectedRoute><Artinvent /></ProtectedRoute>} />
+      {/* <Route path="/premium-service" element={<ProtectedRoute><Artinvent /></ProtectedRoute>} /> */}
       <Route path="/invention/:id" element={<ProtectedRoute><Inventioncollect /></ProtectedRoute>} />
       <Route path="/paystack-redirect" element={<ProtectedRoute><Paystackredirect /></ProtectedRoute>} />
       <Route path="/orders" element={<ProtectedRoute><Order /></ProtectedRoute>} />
       <Route path="/inventioncard/:id" element={<ProtectedRoute><Card /></ProtectedRoute>} />
       <Route path="/artworks/:id" element={<ProtectedRoute><Cardo /></ProtectedRoute>} />
       <Route path="/myworks" element={<ProtectedRoute><Posted /></ProtectedRoute>} />
+      <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
 
       {/* 404 */}
       <Route path="*" element={<h1 className="text-center text-2xl font-mono">Page Not Found</h1>} />

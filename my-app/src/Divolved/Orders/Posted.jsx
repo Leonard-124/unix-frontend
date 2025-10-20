@@ -218,7 +218,7 @@ const Posted = () => {
       const token = await getAccessTokenSilently();
       console.log("Fetching works for:", user.sub); // debug
       const res = await fetch(
-        `http://localhost:3000/api/art/user/${encodeURIComponent(user.sub)}`,
+        `https://unix.up.railway.app/api/art/user/${encodeURIComponent(user.sub)}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -247,7 +247,7 @@ const Posted = () => {
   const handleDelete = async (id) => {
     try {
       const token = await getAccessTokenSilently();
-      const res = await fetch(`http://localhost:3000/api/art/${id}`, {
+      const res = await fetch(`https://unix.up.railway.app/api/art/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -273,7 +273,7 @@ const Posted = () => {
   const handleUpdate = async (id) => {
     try {
       const token = await getAccessTokenSilently();
-      const res = await fetch(`http://localhost:3000/api/art/${id}`, {
+      const res = await fetch(`https://unix.up.railway.app/api/art/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

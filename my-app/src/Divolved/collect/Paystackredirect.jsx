@@ -1,22 +1,21 @@
 
-// import React, { useState, useEffect } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
+// import React, { useState, useEffect } from "react";
+// import { useLocation, useNavigate } from "react-router-dom";
 
 // const PaystackRedirect = () => {
-//   const [cardDetails, setCardDetails] = useState({ email: '' });
-//   const [error, setError] = useState('');
+//   const [cardDetails, setCardDetails] = useState({ email: "" });
+//   const [error, setError] = useState("");
 //   const [loading, setLoading] = useState(false);
+//   const [total, setTotal] = useState(null);
 //   const navigate = useNavigate();
 //   const location = useLocation();
 
-//   // ⚠️ Ensure there are no spaces at the end of your BASE_URL
-//   const BASE_URL = "https://5ce783e47e64.ngrok-free.app"; // replace with your ngrok url
-
-//   const total = 6000;
+//   const BASE_URL = "https://2564dc54fb18.ngrok-free.app"; // replace with your ngrok url
 
 //   useEffect(() => {
 //     const params = new URLSearchParams(location.search);
-//     const reference = params.get('reference');
+//     const reference = params.get("reference");
+//     const id = params.get("id");
 
 //     if (reference) {
 //       verifyPaystackPayment(reference);
@@ -24,157 +23,19 @@
 //     }
 
 //     const paymentId =
-//       params.get('paymentId') ||
-//       params.get('paymentID') ||
-//       params.get('payment_id');
+//       params.get("paymentId") ||
+//       params.get("paymentID") ||
+//       params.get("payment_id");
 
 //     if (paymentId) {
 //       navigate(`/success?paymentId=${paymentId}`);
 //       return;
 //     }
 
-//     const success = params.get('success');
-//     if (success === 'true') navigate('/success');
-//     else if (success === 'false') navigate('/failure');
-//   }, [location]);
+//     const success = params.get("success");
+//     if (success === "true") navigate("/success");
+//     else if (success === "false") navigate("/failure");
 
-//   const handleCardChange = (e) => {
-//     setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
-//   };
-
-//   const handlePayNow = async (e) => {
-//     e.preventDefault();
-//     setError('');
-
-//     const { email } = cardDetails;
-//     if (!email) {
-//       setError('Please enter your email.');
-//       return;
-//     }
-
-//     setLoading(true);
-//     try {
-//       const res = await fetch(`${BASE_URL}/api/payments/paystack/initialize`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({
-//           email,
-//           amount: total,
-//           callback_url: 'http://localhost:5173/paystack-redirect',
-//         }),
-//       });
-
-//       const data = await res.json();
-
-//       if (res.ok && data.authorization_url) {
-//         window.location.href = data.authorization_url;
-//       } else {
-//         setError(data.error || 'Paystack initialization failed.');
-//       }
-//     } catch (err) {
-//       setError('Network error, please try again.');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   const verifyPaystackPayment = async (reference) => {
-//     setLoading(true);
-//     try {
-//       const res = await fetch(`${BASE_URL}/api/payments/paystack/verify/${reference}`);
-//       const data = await res.json();
-
-//       if (res.ok && data.success) {
-//         navigate('/success');
-//       } else {
-//         navigate('/failure');
-//       }
-//     } catch (err) {
-//       navigate('/failure');
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   return (
-//     <div className="text-center mt-20 h-screen flex flex-col justify-center items-center">
-//       <div className="bg-[#eeeeee] w-[700px] h-[300px] flex flex-col justify-center p-6 rounded-lg shadow-md">
-//         <h1 className="text-lg font-bold mb-2">You are about to be redirected to a secure payment platform</h1>
-//         <p className="mb-4">Enter your Email below to continue</p>
-
-//         <form onSubmit={handlePayNow}>
-//           <div className="mb-4 px-4">
-//             <input
-//               type="email"
-//               name="email"
-//               placeholder="Email"
-//               value={cardDetails.email}
-//               onChange={handleCardChange}
-//               className="border rounded px-3 py-2 w-full mb-2"
-//             />
-//           </div>
-
-//           {error && <p className="text-red-500 text-center mb-2">{error}</p>}
-//           {loading && <p className="text-blue-500 text-center mb-2">Processing...</p>}
-
-//           <button
-//             type="submit"
-//             disabled={loading}
-//             className={`px-6 py-2 rounded text-white ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
-//           >
-//             {loading ? 'Please wait...' : `Pay now ₦${total.toFixed(2)}`}
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default PaystackRedirect;
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// import React, { useState, useEffect } from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
-
-// const PaystackRedirect = () => {
-//   const [cardDetails, setCardDetails] = useState({ email: '' });
-//   const [error, setError] = useState('');
-//   const [loading, setLoading] = useState(false);
-//   const [total, setTotal] = useState(null); // dynamic amount
-//   const navigate = useNavigate();
-//   const location = useLocation();
-
-//   // ⚠️ Ensure there are no spaces at the end of your BASE_URL
-//   const BASE_URL = "https://5ce783e47e64.ngrok-free.app"; // replace with your ngrok url
-
-//   useEffect(() => {
-//     const params = new URLSearchParams(location.search);
-//     const reference = params.get('reference');
-//     const id = params.get('id'); // collectible/art id
-
-//     // 1. If redirected back from Paystack with reference → verify
-//     if (reference) {
-//       verifyPaystackPayment(reference);
-//       return;
-//     }
-
-//     // 2. If success/failure flags
-//     const paymentId =
-//       params.get('paymentId') ||
-//       params.get('paymentID') ||
-//       params.get('payment_id');
-
-//     if (paymentId) {
-//       navigate(`/success?paymentId=${paymentId}`);
-//       return;
-//     }
-
-//     const success = params.get('success');
-//     if (success === 'true') navigate('/success');
-//     else if (success === 'false') navigate('/failure');
-
-//     // 3. Otherwise, fetch the art item to get its price
 //     if (id) {
 //       fetchArtPrice(id);
 //     }
@@ -186,8 +47,7 @@
 //       if (!res.ok) throw new Error(`Error fetching art: ${res.status}`);
 //       const data = await res.json();
 
-//       // Ensure numeric price (strip $ if present)
-//       const numericPrice = Number(String(data.price).replace(/[^0-9.]/g, ''));
+//       const numericPrice = Number(String(data.price).replace(/[^0-9.]/g, ""));
 //       const fee = 0.05 * numericPrice;
 //       setTotal(numericPrice + fee);
 //     } catch (err) {
@@ -201,27 +61,27 @@
 
 //   const handlePayNow = async (e) => {
 //     e.preventDefault();
-//     setError('');
+//     setError("");
 
 //     const { email } = cardDetails;
 //     if (!email) {
-//       setError('Please enter your email.');
+//       setError("Please enter your email.");
 //       return;
 //     }
 //     if (!total) {
-//       setError('Unable to fetch amount. Please try again.');
+//       setError("Unable to fetch amount. Please try again.");
 //       return;
 //     }
 
 //     setLoading(true);
 //     try {
 //       const res = await fetch(`${BASE_URL}/api/payments/paystack/initialize`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({
 //           email,
-//           amount: total * 128, // Paystack expects amount in kobo (₦1 = 100 kobo)
-//           callback_url: 'http://localhost:5173/paystack-redirect',
+//           amount: total * 128, // Paystack expects amount in kobo
+//           callback_url: "http://localhost:5173/paystack-redirect",
 //         }),
 //       });
 
@@ -230,10 +90,10 @@
 //       if (res.ok && data.authorization_url) {
 //         window.location.href = data.authorization_url;
 //       } else {
-//         setError(data.error || 'Paystack initialization failed.');
+//         setError(data.error || "Paystack initialization failed.");
 //       }
 //     } catch (err) {
-//       setError('Network error, please try again.');
+//       setError("Network error, please try again.");
 //     } finally {
 //       setLoading(false);
 //     }
@@ -242,58 +102,64 @@
 //   const verifyPaystackPayment = async (reference) => {
 //     setLoading(true);
 //     try {
-//       const res = await fetch(`${BASE_URL}/api/payments/paystack/verify/${reference}`);
+//       const res = await fetch(
+//         `${BASE_URL}/api/payments/paystack/verify/${reference}`
+//       );
 //       const data = await res.json();
 
 //       if (res.ok && data.success) {
-//         navigate('/success');
+//         navigate("/success");
 //       } else {
-//         navigate('/failure');
+//         navigate("/failure");
 //       }
 //     } catch (err) {
-//       navigate('/failure');
+//       navigate("/failure");
 //     } finally {
 //       setLoading(false);
 //     }
 //   };
 
 //   return (
-//     <div className="text-center mt-20 h-screen flex flex-col justify-center items-center">
-//       <div className="bg-[#eeeeee] w-[700px] h-[300px] flex flex-col justify-center p-6 rounded-lg shadow-md">
-//         <h1 className="text-lg font-bold mb-2">
-//           You are about to be redirected to a secure payment platform
+//     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+//       <div className="bg-white w-full max-w-md rounded-lg shadow-lg p-6">
+//         <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 text-center">
+//           Secure Payment Redirect
 //         </h1>
-//         <p className="mb-4">Enter your Email below to continue</p>
+//         <p className="text-gray-600 text-center mb-6">
+//           Enter your email to continue to Paystack
+//         </p>
 
-//         <form onSubmit={handlePayNow}>
-//           <div className="mb-4 px-4">
-//             <input
-//               type="email"
-//               name="email"
-//               placeholder="Email"
-//               value={cardDetails.email}
-//               onChange={handleCardChange}
-//               className="border rounded px-3 py-2 w-full mb-2"
-//             />
-//           </div>
+//         <form onSubmit={handlePayNow} className="space-y-4">
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="Email"
+//             value={cardDetails.email}
+//             onChange={handleCardChange}
+//             className="border rounded px-3 py-2 w-full focus:ring-2 focus:ring-red-500 outline-none"
+//           />
 
-//           {error && <p className="text-red-500 text-center mb-2">{error}</p>}
-//           {loading && <p className="text-blue-500 text-center mb-2">Processing...</p>}
+//           {error && (
+//             <p className="text-red-500 text-sm text-center">{error}</p>
+//           )}
+//           {loading && (
+//             <p className="text-blue-500 text-sm text-center">Processing...</p>
+//           )}
 
 //           <button
 //             type="submit"
 //             disabled={loading || !total}
-//             className={`px-6 py-2 rounded text-white ${
+//             className={`w-full py-2 rounded text-white font-medium transition ${
 //               loading || !total
-//                 ? 'bg-gray-400 cursor-not-allowed'
-//                 : 'bg-blue-600 hover:bg-blue-700'
+//                 ? "bg-gray-400 cursor-not-allowed"
+//                 : "bg-red-600 hover:bg-red-700"
 //             }`}
 //           >
 //             {loading
-//               ? 'Please wait...'
+//               ? "Please wait..."
 //               : total
-//               ? `Pay now $ ${total.toFixed(2)}`
-//               : 'Fetching amount...'}
+//               ? `Pay now $${total.toFixed(2)}`
+//               : "Fetching amount..."}
 //           </button>
 //         </form>
 //       </div>
@@ -302,23 +168,24 @@
 // };
 
 // export default PaystackRedirect;
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const PaystackRedirect = () => {
   const [cardDetails, setCardDetails] = useState({ email: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(null);
+  const [artDetails, setArtDetails] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, getAccessTokenSilently } = useAuth0();
 
-  const BASE_URL = "https://unix.up.railway.app"; // replace with your ngrok url
-
+  const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  //const BASE_URLL = "https://2564dc54fb18.ngrok-free.app";
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const reference = params.get("reference");
@@ -350,13 +217,21 @@ const PaystackRedirect = () => {
 
   const fetchArtPrice = async (id) => {
     try {
-      const res = await fetch(`https://unix.up.railway.app/api/art/${id}`);
+      const res = await fetch(`${BASE_URL}/api/art/${id}`);
       if (!res.ok) throw new Error(`Error fetching art: ${res.status}`);
       const data = await res.json();
 
+      setArtDetails(data);
+
+      // const numericPrice = Number(String(data.price).replace(/[^0-9.]/g, ""));
       const numericPrice = Number(String(data.price).replace(/[^0-9.]/g, ""));
-      const fee = 0.05 * numericPrice;
+      const fee = 0.05 * (numericPrice);
       setTotal(numericPrice + fee);
+
+      // Pre-fill email if user is logged in
+      if (user?.email) {
+        setCardDetails({ email: user.email });
+      }
     } catch (err) {
       setError(err.message);
     }
@@ -379,16 +254,30 @@ const PaystackRedirect = () => {
       setError("Unable to fetch amount. Please try again.");
       return;
     }
+    if (!artDetails) {
+      setError("Art details not found.");
+      return;
+    }
 
     setLoading(true);
     try {
+      const token = await getAccessTokenSilently({
+        authorizationParams: {
+          audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+        },
+      });
+
       const res = await fetch(`${BASE_URL}/api/payments/paystack/initialize`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
         body: JSON.stringify({
           email,
-          amount: total * 128, // Paystack expects amount in kobo
-          callback_url: "http://localhost:5173/paystack-redirect",
+          amount: total * 128,
+          artId: artDetails._id,
+          quantity: 1, // You can make this dynamic if needed
         }),
       });
 
@@ -400,6 +289,7 @@ const PaystackRedirect = () => {
         setError(data.error || "Paystack initialization failed.");
       }
     } catch (err) {
+      console.error("Payment initialization error:", err);
       setError("Network error, please try again.");
     } finally {
       setLoading(false);
@@ -436,6 +326,28 @@ const PaystackRedirect = () => {
           Enter your email to continue to Paystack
         </p>
 
+        {artDetails && (
+          <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+            <div className="flex gap-4">
+              <img
+                src={artDetails.image}
+                alt={artDetails.name}
+                className="w-20 h-20 object-cover rounded"
+              />
+              <div className="flex-1">
+                <h3 className="font-semibold text-gray-800">{artDetails.name}</h3>
+                <p className="text-sm text-gray-600">
+                  {artDetails.author && `Artist: ${artDetails.author}`}
+                  {artDetails.inventor && `Inventor: ${artDetails.inventor}`}
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Price: {artDetails.price}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         <form onSubmit={handlePayNow} className="space-y-4">
           <input
             type="email"
@@ -444,6 +356,7 @@ const PaystackRedirect = () => {
             value={cardDetails.email}
             onChange={handleCardChange}
             className="border rounded px-3 py-2 w-full focus:ring-2 focus:ring-red-500 outline-none"
+            required
           />
 
           {error && (
@@ -451,6 +364,23 @@ const PaystackRedirect = () => {
           )}
           {loading && (
             <p className="text-blue-500 text-sm text-center">Processing...</p>
+          )}
+
+          {total && (
+            <div className="bg-blue-50 p-3 rounded text-sm">
+              <div className="flex justify-between mb-1">
+                <span>Item Price:</span>
+                <span>${(total / 1.05).toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between mb-1">
+                <span>Service Fee (5%):</span>
+                <span>${(total - total / 1.05).toFixed(2)}</span>
+              </div>
+              <div className="flex justify-between font-semibold text-base border-t pt-2 mt-2">
+                <span>Total:</span>
+                <span>${total.toFixed(2)}</span>
+              </div>
+            </div>
           )}
 
           <button
@@ -465,7 +395,7 @@ const PaystackRedirect = () => {
             {loading
               ? "Please wait..."
               : total
-              ? `Pay now $${total.toFixed(2)}`
+              ? `Pay $${total.toFixed(2)}`
               : "Fetching amount..."}
           </button>
         </form>

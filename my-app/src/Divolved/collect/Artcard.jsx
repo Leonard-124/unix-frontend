@@ -150,6 +150,9 @@ const Artcard = () => {
               Size: {item.size}
             </p>
             <p className="text-md sm:text-lg text-gray-600 font-mono">
+              Quantity remaining: {item.quantity}
+            </p>
+            <p className="text-md sm:text-lg text-gray-600 font-mono">
               Price: {item.price}
             </p>
 
