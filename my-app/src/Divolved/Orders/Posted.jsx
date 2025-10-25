@@ -302,7 +302,7 @@ const Posted = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10 font-sans">
-      <h1 className="text-3xl font-bold text-center mb-8">🖼️ My Posted Works</h1>
+      <h1 className="text-3xl font-bold text-center mb-8"> Works Posted.</h1>
 
       {loading && <p className="text-center">Loading...</p>}
       {error && <p className="text-center text-red-500">{error}</p>}

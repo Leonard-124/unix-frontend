@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import axios from "axios";
-
 import Home from "./Components/Home";
 import Davinci from "./Components/Davinci";
 import Explore from "./Components/Explore/Explore";
