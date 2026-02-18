@@ -2,6 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
+import AdminPanel from "./Components/Security/AdminPanel";
 import axios from "axios";
 import Home from "./Components/Home";
 import Davinci from "./Components/Davinci";
@@ -28,7 +29,7 @@ import Cardo from "./Divolved/collect/Cardo";
 import Artistinventor from "./Divolved/Artistinventor";
 //import Artinvent from "./Divolved/Artinvent";
 import Whatsnew from "./Divolved/Whatsnew";
-import Photography from "./Divolved/Photography";
+import Photography from "./Divolved/Photography"; 
 import Editorial from "./Divolved/Editorial";
 import Artworks from "./Divolved/Artworks";
 import Artworkscard from "./Divolved/collect/Artworkscard";
@@ -117,6 +118,7 @@ const App = () => {
 
       {/* Auth0 callback route */}
       <Route path="/callback" element={<CallbackPage />} />
+      <Route path="/admin" element={<AdminPanel />} />
 
       {/* Protected routes */}
       <Route path="/Checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />

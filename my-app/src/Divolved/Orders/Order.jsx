@@ -24,7 +24,7 @@ const Order = () => {
         });
 
         const res = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/api/orders`,
+          `${import.meta.env.VITE_API_BASE_UR}/api/orders`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

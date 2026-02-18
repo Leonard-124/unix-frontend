@@ -52,7 +52,7 @@ createRoot(document.getElementById('root')).render(
       authorizationParams={{
         redirect_uri: window.location.origin + "/callback",
         audience: authConfig.audience,
-        scope: "openid profile email"
+         scope: "openid profile email offline_access" 
       }}
       // ✅ Critical: Enable token caching to prevent re-login on refresh
       cacheLocation="localstorage"

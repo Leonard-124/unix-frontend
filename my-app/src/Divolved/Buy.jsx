@@ -89,7 +89,7 @@ const Buy = () => {
       setLoading(true);
       setError(null);
 
-      const res = await fetch("https://unix.up.railway.app/api/art");
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_UR}/api/art`);
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
       }

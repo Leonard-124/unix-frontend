@@ -13,7 +13,7 @@ const Inventions = () => {
   useEffect(() => {
     const fetchInventions = async () => {
       try {
-        const res = await fetch("https://unix.up.railway.app/api/art"); // adjust if deployed
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_UR}/api/art`); // adjust if deployed
         if (!res.ok) throw new Error("Failed to fetch inventions");
         const data = await res.json();
 
@@ -38,16 +38,15 @@ const Inventions = () => {
       <div className="mt-24 px-4 sm:px-6 lg:px-12 mb-5">
         <Outlet />
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-4">
-          Welcome to the Inventions Page
+          Trending art pieces
         </h1>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-red-400 text-lg sm:text-xl font-light mb-6">
           <p className="text-center md:text-left">
-            Explore the latest inventions and innovations in technology, art and
-            other fields.
+            Get the latest pieces of art at an affordable price here at UnixArt
           </p>
           <p className="text-center md:text-right">
-            Heads Up — who invented the light bulb? 🤔
+            Quality Art for All.
           </p>
         </div>
 
@@ -94,7 +93,7 @@ const Inventions = () => {
           </div>
         ) : (
           <p className="text-center text-gray-500 mt-6 text-lg">
-            No inventions found.
+            No Arts found.
           </p>
         )}
       </div>
