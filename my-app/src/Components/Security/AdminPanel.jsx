@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 // ─── CONFIG ──────────────────────────────────────────────────────────────────
-const API = import.meta.env.VITE_API_BASE_UR || "http://localhost:3000";
+const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
 // ─── ICONS ───────────────────────────────────────────────────────────────────
 const Icon = ({ d, size = 18, color = "currentColor" }) => (

@@ -1,36 +1,4 @@
-// import React from 'react'
-// import { useState, useEffect } from 'react'
 
-// const Photography = () => {
-//     const [data, Setdata] = useState([])
-
-//     const Getphotos = async () =>{
-//         try{
-//              const res = await fetch("http://localhost:3000/api/uploads")
-//         if(!res.ok) {
-//             throw new Error(`HTTP ${res.status}`)
-//         }
-//         const result = await res.json()
-//         Setdata(result)
-//         } catch (err) {
-//             console.log(err.message)
-//         }
-       
-//     }
-//     useEffect(()=>{
-//         Getphotos()
-//     },[])
-//   return (
-//     <div>
-//         <div>
-//             {data}
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default Photography
-////////////////////////////////////////////////////////////
 
 import React, { useEffect, useState } from "react";
 

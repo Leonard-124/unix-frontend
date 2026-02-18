@@ -1,79 +1,5 @@
 
 
-// import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import Navbar from "../Pages/Navbar";
-
-// const Buy = () => {
-//   const [data, setData] = useState([]);
-//   const [loading, setLoading] = useState(true); // start as loading
-//   const [error, setError] = useState(null);
-
-//   const Getdata = async () => {
-//     try {
-//       setLoading(true);
-//       setError(null);
-
-//       const res = await fetch("http://localhost:3000/api/art");
-//       if (!res.ok) {
-//         throw new Error(`HTTP ${res.status}`);
-//       }
-
-//       const result = await res.json();
-//       setData(result);
-//     } catch (err) {
-//       console.error("Failed to fetch:", err.message);
-//       setError("Failed to load data. Please try again later.");
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     Getdata();
-//   }, []);
-
-//   return (
-//     <>
-//     <Navbar />
-//         <div className="p-6 mt-20">
-//       <h1 className="text-2xl font-bold mb-4">Available for You</h1>
-
-//       {loading && <div>Loading...</div>}
-
-//       {error && <div className="text-red-500">{error}</div>}
-
-//       {!loading && !error && data.length === 0 && (
-//         <div>No artworks available right now.</div>
-//       )}
-
-//       {!loading && !error && data.length > 0 && (
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-//           {data.map((item, index) => (
-//             <Link to={`/art/${item._id}`}
-//               key={index}
-//               className="border rounded-lg shadow hover:shadow-lg transition p-0.5"
-//             >
-//               <img
-//                 src={item.image}
-//                 alt={item.name}
-//                 className="w-full h-48 object-cover rounded"
-//               />
-//               <p className="mt-2 font-semibold">{item.name}</p>
-//               <p>Type {item.type}</p>
-//               <p>From: {item.price}</p>
-//             </Link>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//     </>
-//   );
-// };
-
-// export default Buy;
-///////////////////////////////////////////////////////////
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Pages/Navbar";
@@ -89,7 +15,7 @@ const Buy = () => {
       setLoading(true);
       setError(null);
 
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_UR}/api/art`);
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/art`);
       if (!res.ok) {
         throw new Error(`HTTP ${res.status}`);
       }

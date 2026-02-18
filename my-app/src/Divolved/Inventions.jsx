@@ -13,7 +13,7 @@ const Inventions = () => {
   useEffect(() => {
     const fetchInventions = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_API_BASE_UR}/api/art`); // adjust if deployed
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/art`); // adjust if deployed
         if (!res.ok) throw new Error("Failed to fetch inventions");
         const data = await res.json();
 
