@@ -8,8 +8,8 @@ import Home from "./Components/Home";
 import Davinci from "./Components/Davinci";
 import Explore from "./Components/Explore/Explore";
 import Shop from "./Components/Shop";
-import SignUp from "./Components/Security/SignUp";
-import Login from "./Components/Security/Login";
+//import SignUp from "./Components/Security/SignUp";
+//import Login from "./Components/Security/Login";
 import Logout from "./Components/Security/Logout";
 import UserProfile from "./Components/Security/UserProfile";
 import ProtectedRoute from "./Pages/ProtectedRoute";
@@ -95,9 +95,9 @@ const App = () => {
       <Route path="Cart" element={<Cart />} />
       <Route path="/success" element={<Success />} />
       <Route path="/failure" element={<Paymentfail />} />
-      <Route path="/SignUp" element={<SignUp />} />
-      <Route path="/logout" element={<Logout />} />
-      <Route path="/login" element={<Login />} />
+      {/* <Route path="/SignUp" element={<SignUp />} /> */}
+      <Route path="/logout" element={< Logout />} />
+      {/* <Route path="/login" element={<Login />} /> */}
       <Route path="/Crypto" element={<Crypto />} />
       <Route path="/ComingSoon" element={<Coming_soon />} />
       <Route path="/card1" element={<Card1 />} />
