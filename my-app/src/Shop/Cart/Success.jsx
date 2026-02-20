@@ -11,7 +11,7 @@
    )
  }
  
- export default Success
+ export default Success;
 ///////////////////////////////////////////////
 
 // import React, { useEffect, useState } from "react";
