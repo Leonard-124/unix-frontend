@@ -30,7 +30,7 @@ const PaystackButton = ({ user }) => {
       key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
       email: user.email,
       amount: 19900, // cents if USD
-      currency: "USD",
+      currency: "KSH",
       onSuccess: async (transaction) => {
         try {
           const res = await fetch("/api/payments/paystack/verify", {

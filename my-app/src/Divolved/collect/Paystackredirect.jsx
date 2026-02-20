@@ -370,15 +370,15 @@ const PaystackRedirect = () => {
             <div className="bg-blue-50 p-3 rounded text-sm">
               <div className="flex justify-between mb-1">
                 <span>Item Price:</span>
-                <span>${(total / 1.05).toFixed(2)}</span>
+                <span>KSH{(total / 1.05).toFixed(2)}</span>
               </div>
               <div className="flex justify-between mb-1">
                 <span>Service Fee (5%):</span>
-                <span>${(total - total / 1.05).toFixed(2)}</span>
+                <span>KSH{(total - total / 1.05).toFixed(2)}</span>
               </div>
               <div className="flex justify-between font-semibold text-base border-t pt-2 mt-2">
                 <span>Total:</span>
-                <span>${total.toFixed(2)}</span>
+                <span>KSH{total.toFixed(2)}</span>
               </div>
             </div>
           )}
