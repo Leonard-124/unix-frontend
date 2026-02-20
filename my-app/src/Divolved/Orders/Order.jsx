@@ -196,7 +196,7 @@ const Order = () => {
                       <div>
                         <p className="text-gray-500">Amount Paid</p>
                         <p className="font-semibold text-lg text-blue-600">
-                          ${((order.amount / 100)/ 128).toFixed(2)}
+                          KSH{(order.amount / 100).toFixed(2)}
                         </p>
                       </div>
 

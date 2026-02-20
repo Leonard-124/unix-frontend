@@ -275,7 +275,7 @@ const PaystackRedirect = () => {
         },
         body: JSON.stringify({
           email,
-          amount: total * 128,
+          amount: total,
           artId: artDetails._id,
           quantity: 1, // You can make this dynamic if needed
         }),
