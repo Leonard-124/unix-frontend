@@ -37,7 +37,7 @@ import Categories from "./Shop/Categories/Categories";
 import Cart from "./Shop/Cart/Cart";
 import Product from "./Shop/Productcard/Product";
 import ProductCard from "./Shop/Productcard/ProductCard";
-import Coming_soon from "./Components/Coming_soon";
+import Coming_soon from "./Components/Waste/Coming_soon"
 import Checkout from "./Shop/Cart/Checkout/Checkout";
 import Gigc from "./Shop/Art/Gigc";
 import View from "./Pages/View";

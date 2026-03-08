@@ -233,7 +233,7 @@ const UserProfile = () => {
         {/* Profile Card */}
         <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6 sm:p-8">
           <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-            Welcome to Unix
+            Welcome to UnixArt
           </h2>
 
           {/* Avatar Section */}
