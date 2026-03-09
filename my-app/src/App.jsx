@@ -53,7 +53,8 @@ import Order from "./Divolved/Orders/Order"
 import Posted from "./Divolved/Orders/Posted";
 import CreatorProfile from "./Components/CreatorProfile";
 import Messages from "./Components/Messages";
-
+import Collectionlist from "./Divolved/collect/Collectionlist";
+import PaystackRedirect2 from "./Divolved/collect/Paystackredirect2";
 const App = () => {
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
 
@@ -130,11 +131,13 @@ const App = () => {
       {/* <Route path="/premium-service" element={<ProtectedRoute><Artinvent /></ProtectedRoute>} /> */}
       <Route path="/invention/:id" element={<ProtectedRoute><Inventioncollect /></ProtectedRoute>} />
       <Route path="/paystack-redirect" element={<ProtectedRoute><Paystackredirect /></ProtectedRoute>} />
+      <Route path="/paystack-redirect2" element={<ProtectedRoute><PaystackRedirect2 /></ProtectedRoute>} />
       <Route path="/orders" element={<ProtectedRoute><Order /></ProtectedRoute>} />
       <Route path="/inventioncard/:id" element={<ProtectedRoute><Card /></ProtectedRoute>} />
       <Route path="/artworks/:id" element={<ProtectedRoute><Cardo /></ProtectedRoute>} />
       <Route path="/myworks" element={<ProtectedRoute><Posted /></ProtectedRoute>} />
       <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
+      <Route path="/collections" element={<ProtectedRoute><Collectionlist /></ProtectedRoute>} />
 
       {/* 404 */}
       <Route path="*" element={<h1 className="text-center text-2xl font-mono">Page Not Found</h1>} />

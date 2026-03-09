@@ -295,6 +295,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { HiMenu, HiX, HiSearch, HiChevronDown } from "react-icons/hi";
 import UnixArt from "../assets/Arts/UnixArt.png";
+import { useContext } from "react";
+import { CartContext } from "../Context/Context";
 
 const Navbar = () => {
   const { isAuthenticated, user, loginWithRedirect, logout, getAccessTokenSilently } = useAuth0();
@@ -305,6 +307,8 @@ const Navbar = () => {
   const [userProfile, setUserProfile] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const { cart } = useContext(CartContext)
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
   // Fetch user profile to get avatar
   useEffect(() => {
@@ -527,17 +531,23 @@ const Navbar = () => {
                         </p>
                       </div>
                       <Link
+                        to="/collections"
+                        className="relative block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                      Collections
+                      <span className="absolute top-0 right-[-1.5px] bg-red-500 text-white rounded-full h-[18px] w-[18px] flex items-center justify-center text-[12px] font-[500] tracking-[0.5px] p-0.5">{cartCount}</span>
+                      </Link>
+                      <Link
                         to="/profile"
                         className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                       >
-                        My Profile
+                        Profile
                       </Link>
-                      <Link
+                      {/* <Link
                         to="/post"
                         className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
                       >
                         Upload Artwork
-                      </Link>
+                      </Link> */}
                       <div className="border-t border-gray-100 mt-1 pt-1">
                         <button
                           onClick={() =>

@@ -57,12 +57,24 @@ const Cardo = () => {
             <p className='text-2xl text-gray-500 '>By {item.inventor}</p>
             <p className='text-xl text-gray font-mono'>Size: {item.size}</p>
             <p className='text-xl text-gray font-mono'>Price: {item.price}</p>
-            <Link
+            <div className='flex justify-around'>
+              <Link
               to={`/artworkscard/${item._id}`}
               className='text-white bg-black rounded p-4 text-xl mr-5 ml-5 hover:bg-[#535353]'
             >
               Buy Now
             </Link>
+            <Link to={`/collections`} className='text-white bg-black rounded p-4 text-xl mr-5 ml-5 hover:bg-[#535353]'>
+            Continue with cart Collections
+            </Link>
+            </div>
+            <div>
+              <h1>Contact sellers for more inquiry to this works?</h1>
+              <div className='flex justify-center gap-3'>
+                  <a href="https://wa.me/in/0790630415">WhatSApp</a>
+                  <a href="tel:+254790630415">Telephone</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
