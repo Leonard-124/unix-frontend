@@ -55,6 +55,7 @@ import CreatorProfile from "./Components/CreatorProfile";
 import Messages from "./Components/Messages";
 import Collectionlist from "./Divolved/collect/Collectionlist";
 import PaystackRedirect2 from "./Divolved/collect/Paystackredirect2";
+import Wishlist from "./Divolved/collect/Wishlist";
 const App = () => {
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
 
@@ -138,6 +139,7 @@ const App = () => {
       <Route path="/myworks" element={<ProtectedRoute><Posted /></ProtectedRoute>} />
       <Route path="/messages" element={<ProtectedRoute><Messages /></ProtectedRoute>} />
       <Route path="/collections" element={<ProtectedRoute><Collectionlist /></ProtectedRoute>} />
+       <Route path="/wishlist" element={<ProtectedRoute><Wishlist /></ProtectedRoute>} />
 
       {/* 404 */}
       <Route path="*" element={<h1 className="text-center text-2xl font-mono">Page Not Found</h1>} />

@@ -308,6 +308,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const { cart } = useContext(CartContext)
+  const { wishlist } = useContext(CartContext)
+  const wishCount = wishlist.reduce((total, item) => total + item.quantity, 0)
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
   // Fetch user profile to get avatar
@@ -464,12 +466,19 @@ const Navbar = () => {
                   {linkUnderline("/inventions")}
                 </Link>
                 <Link to="/buy" className={linkClasses("/buy")}>
-                  Buy
+                  General
                   {linkUnderline("/buy")}
                 </Link>
                 <Link to="/artworks" className={linkClasses("/artworks")}>
-                  Paintings
+                  Artworks
                   {linkUnderline("/artworks")}
+                </Link>
+                <Link
+                        to="/collections"
+                        className={`relative block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors`}>
+                      Inquiries
+                      {linkUnderline("/collections")}
+                      <span className="absolute top-0 right-[-1.5px] bg-red-500 text-white rounded-full h-[18px] w-[18px] flex items-center justify-center text-[12px] font-[500] tracking-[0.5px] p-0.5">{cartCount}</span>
                 </Link>
               </div>
 
@@ -531,10 +540,10 @@ const Navbar = () => {
                         </p>
                       </div>
                       <Link
-                        to="/collections"
+                        to="/wishlist"
                         className="relative block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
-                      Collections
-                      <span className="absolute top-0 right-[-1.5px] bg-red-500 text-white rounded-full h-[18px] w-[18px] flex items-center justify-center text-[12px] font-[500] tracking-[0.5px] p-0.5">{cartCount}</span>
+                      Wishlist
+                      <span className="absolute top-0 right-[-1.5px] bg-red-500 text-white rounded-full h-[18px] w-[18px] flex items-center justify-center text-[12px] font-[500] tracking-[0.5px] p-0.5">{wishCount}</span>
                       </Link>
                       <Link
                         to="/profile"
@@ -615,14 +624,20 @@ const Navbar = () => {
                 to="/buy"
                 className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
-                Buy
+                General
               </Link>
               <Link
                 to="/artworks"
                 className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
-                Paintings
+                Artworks
               </Link>
+              <Link
+                        to="/collections"
+                        className="relative block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                      Inquiries
+                      <span className="absolute top-0 right-[-1.5px] bg-red-500 text-white rounded-full h-[18px] w-[18px] flex items-center justify-center text-[12px] font-[500] tracking-[0.5px] p-0.5">{cartCount}</span>
+            </Link>
 
               {/* Auth Section */}
               {!isAuthenticated ? (
@@ -666,12 +681,18 @@ const Navbar = () => {
                       </p>
                     </div>
                   </Link>
-                  <Link
+                  {/* <Link
                     to="/post"
                     className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
                   >
                     Upload Artwork
-                  </Link>
+                  </Link> */}
+                  <Link
+                        to="/wishlist"
+                        className="relative block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors">
+                      Wishlist
+                      <span className="absolute top-0 right-[-1.5px] bg-red-500 text-white rounded-full h-[18px] w-[18px] flex items-center justify-center text-[12px] font-[500] tracking-[0.5px] p-0.5">{wishCount}</span>
+                      </Link>
                   <button
                     onClick={() =>
                       logout({
