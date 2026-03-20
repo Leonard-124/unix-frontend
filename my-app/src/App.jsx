@@ -104,8 +104,8 @@ const App = () => {
       <Route path="/ComingSoon" element={<Coming_soon />} />
       <Route path="/best_art" element={<Card1 />} />
       <Route path="/top_best" element={<Card2 />} />
-      <Route path="/best_inventions" element={<Card3 />} />
-      <Route path="/why_choose_art&=?design" element={<Card4 />} />
+      <Route path="/best_inventors" element={<Card3 />} />
+      <Route path="/why_choose_art_design" element={<Card4 />} />
       <Route path="/inventions" element={<Inventions />} />
       <Route path="/view/:id" element={<View />} />
       <Route path="/artistinventor" element={<Artistinventor />} />

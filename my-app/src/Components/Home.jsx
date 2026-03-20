@@ -9,15 +9,19 @@ import Footer from './Footer'
 import Discover from '../Pages/Discover'
 //import Buymecofee from '../Divolved/Buymecofee'
 import Message from '../Pages/Message'
+import About from '../Pages/About'
+import Testimony from '../Pages/Testimony'
 
 const Home = () => {
   return (
     <>
     <Navbar />
-    <Info />
+    <Info/>
     <Message/>
-    <Show />
+    <About/>
     <Available />
+    <Testimony />
+    <Show/>
     <Discover />
     <Footer />
     </>

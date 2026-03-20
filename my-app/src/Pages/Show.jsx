@@ -65,10 +65,10 @@ import fotios from "../assets/Arts/fotios.jpg";
 
 // FIX: use Link from react-router-dom instead of <a href> for internal routes
 const images = [
-  { id: 1, src: hague,     text: "Best Art of 2025",                   sub: "Editorial",   link: "/best_art" },
+  { id: 1, src: hague,     text: "Best Art of 2026",                   sub: "Editorial",   link: "/best_art" },
   { id: 2, src: suzyalwhood, text: "Top 30 Best Artists in the World",   sub: "Culture",     link: "/top_best" },
   { id: 3, src: nicigoten,      text: "Best Inventors of All Time",         sub: "Innovation",  link: "/best_inventors" },
-  { id: 4, src: fotios,    text: "Why Choose Art & Design?",           sub: "Perspective", link: "/why_choose_art&=?design" },
+  { id: 4, src: fotios,    text: "Why Choose Art & Design?",           sub: "Perspective", link: "/why_choose_art_design" },
 ];
 
 const Show = () => {

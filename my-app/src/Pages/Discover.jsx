@@ -26,8 +26,8 @@ import roman from "../assets/Arts/roman.jpg";
 
 const Discover = () => {
   return (
-    <section className="mt-20 bg-[#f5f5f5] py-10">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 lg:px-12 gap-8">
+    <section className="mt-20 bg-[#f5f5f5] py-5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-1 lg:px-3 gap-8">
         {/* Text Section */}
         <div className="flex-1 text-center md:text-left">
           <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl leading-snug tracking-wide">
@@ -45,7 +45,7 @@ const Discover = () => {
           <img
             src={roman}
             alt="The Roman Colosseum"
-            className="w-full h-64 sm:h-80 md:h-[400px] object-cover rounded-lg shadow-md"
+            className="w-full h-full sm:h-80 md:h-[400px] object-cover rounded-lg shadow-md"
           />
         </div>
       </div>

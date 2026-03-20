@@ -3,6 +3,7 @@
 import React from "react";
 import Navbar from "../../Pages/Navbar";
 import hague from "../../assets/Arts/hague.jpg";
+import fotios from "../../assets/Arts/fotios.jpg"
 
 const Card1 = () => {
   return (
@@ -19,7 +20,7 @@ const Card1 = () => {
           <div className="bg-white rounded-lg shadow p-4 border">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src={cottonbro}
+                src={hague}
                 alt="Asia Africa Middle-East"
                 className="w-24 h-24 object-cover rounded"
               />
@@ -49,7 +50,7 @@ const Card1 = () => {
           <div className="bg-white rounded-lg shadow p-4 border">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src={hague}
+                src={fotios}
                 alt="America"
                 className="w-24 h-24 object-cover rounded"
               />
@@ -78,7 +79,7 @@ const Card1 = () => {
           <div className="bg-white rounded-lg shadow p-4 border">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src={cottonbro}
+                src={hague}
                 alt="Europe UK"
                 className="w-24 h-24 object-cover rounded"
               />

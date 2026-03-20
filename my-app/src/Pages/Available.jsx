@@ -177,13 +177,13 @@ const Available = () => {
         {/* Header */}
         <header className="text-center mb-14">
           <p className="text-[10px] tracking-[0.25em] uppercase text-neutral-400 mb-3">
-            Featured
+            Featured Collections
           </p>
           <h2
             className="text-4xl sm:text-5xl font-light tracking-tight text-neutral-900 mb-5"
             style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
           >
-            Available For You
+            Available works For You
           </h2>
           <div className="w-10 h-px bg-neutral-800 mx-auto" />
         </header>
@@ -235,7 +235,7 @@ const Available = () => {
                     />
                     <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <span className="font-mono text-[10px] tracking-[0.18em] uppercase text-white border-b border-white/60 pb-0.5">
-                        View Work
+                        BUY NOW
                       </span>
                     </div>
                   </Link>
@@ -269,7 +269,7 @@ const Available = () => {
                         to={`/artworks/${item._id}`}
                         className="font-mono text-[10px] tracking-[0.14em] uppercase bg-neutral-900 text-white px-4 py-2 hover:bg-neutral-600 active:scale-95 transition-all duration-150"
                       >
-                        View
+                        BUY NOW
                       </Link>
                     </div>
                   </div>
