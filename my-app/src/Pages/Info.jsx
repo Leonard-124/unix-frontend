@@ -128,28 +128,28 @@
 ////////////////////////////////////////////////////////////////
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import hague from "../assets/Arts/hague.jpg";
-import cottonbro from "../assets/Arts/cottonbro.jpg";
-import googledeep from "../assets/Arts/googledeepmind.jpg";
+import eastart from "../assets/Arts/eastart.png";
+import mask_art from "../assets/Arts/mask_art.png";
+import wall_hanging from "../assets/Arts/wall_hanging.png";
 
 const slides = [
   {
-    eyebrow: "Editorial",
-    text: "Beautiful Mountain View",
-    image: hague,
-    link: "https://example.com/mountain",
+    eyebrow: "Woodart",
+    text: "African map on art",
+    image: eastart,
+    link: "/buy",
   },
   {
-    eyebrow: "Culture",
-    text: "Sunny Beach Paradise",
-    image: cottonbro,
-    link: "https://example.com/beach",
+    eyebrow: "Culture decorum",
+    text: "Well engraved and curved masks nice for embracing cultures.",
+    image: mask_art,
+    link: "/buy",
   },
   {
-    eyebrow: "Innovation",
-    text: "City Skyline at Night",
-    image: googledeep,
-    link: "https://example.com/city",
+    eyebrow: "Artwork",
+    text: "A collection you can hang on your dining wall.",
+    image: wall_hanging,
+    link: "/buy",
   },
 ];
 
@@ -253,7 +253,7 @@ const Info = () => {
                 rel="noopener noreferrer"
                 className="font-mono text-[10px] tracking-[0.18em] uppercase text-neutral-800 border-b border-neutral-800 hover:text-neutral-400 hover:border-neutral-400 transition-colors pb-0.5 w-fit"
               >
-                Read More →
+                Get Now →
               </a>
             </div>
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Navbar from "../../Pages/Navbar";
-import cottonbro from "../../assets/Arts/cottonbro.jpg";
+import hague from "../../assets/Arts/hague.jpg";
 
 const Card1 = () => {
   return (
@@ -49,7 +49,7 @@ const Card1 = () => {
           <div className="bg-white rounded-lg shadow p-4 border">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src={cottonbro}
+                src={hague}
                 alt="America"
                 className="w-24 h-24 object-cover rounded"
               />

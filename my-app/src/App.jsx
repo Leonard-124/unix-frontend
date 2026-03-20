@@ -102,10 +102,10 @@ const App = () => {
       {/* <Route path="/login" element={<Login />} /> */}
       <Route path="/Crypto" element={<Crypto />} />
       <Route path="/ComingSoon" element={<Coming_soon />} />
-      <Route path="/card1" element={<Card1 />} />
-      <Route path="/card2" element={<Card2 />} />
-      <Route path="/card3" element={<Card3 />} />
-      <Route path="/card4" element={<Card4 />} />
+      <Route path="/best_art" element={<Card1 />} />
+      <Route path="/top_best" element={<Card2 />} />
+      <Route path="/best_inventions" element={<Card3 />} />
+      <Route path="/why_choose_art&=?design" element={<Card4 />} />
       <Route path="/inventions" element={<Inventions />} />
       <Route path="/view/:id" element={<View />} />
       <Route path="/artistinventor" element={<Artistinventor />} />

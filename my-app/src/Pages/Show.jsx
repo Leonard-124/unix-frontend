@@ -59,16 +59,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import hague from "../assets/Arts/hague.jpg";
-import cottonbro from "../assets/Arts/cottonbro.jpg";
-import bulb from "../assets/Arts/bulb.jpg";
+import suzyalwhood from "../assets/Arts/suzyalwhood2.jpg";
+import nicigoten from "../assets/Arts/nicigoten.jpg"
 import fotios from "../assets/Arts/fotios.jpg";
 
 // FIX: use Link from react-router-dom instead of <a href> for internal routes
 const images = [
-  { id: 1, src: hague,     text: "Best Art of 2025",                   sub: "Editorial",   link: "/card1" },
-  { id: 2, src: cottonbro, text: "Top 30 Best Artists in the World",   sub: "Culture",     link: "/card2" },
-  { id: 3, src: bulb,      text: "Best Inventors of All Time",         sub: "Innovation",  link: "/card3" },
-  { id: 4, src: fotios,    text: "Why Choose Art & Design?",           sub: "Perspective", link: "/card4" },
+  { id: 1, src: hague,     text: "Best Art of 2025",                   sub: "Editorial",   link: "/best_art" },
+  { id: 2, src: suzyalwhood, text: "Top 30 Best Artists in the World",   sub: "Culture",     link: "/top_best" },
+  { id: 3, src: nicigoten,      text: "Best Inventors of All Time",         sub: "Innovation",  link: "/best_inventors" },
+  { id: 4, src: fotios,    text: "Why Choose Art & Design?",           sub: "Perspective", link: "/why_choose_art&=?design" },
 ];
 
 const Show = () => {
