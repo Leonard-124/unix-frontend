@@ -239,6 +239,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Form from "./Form"; //
 
 const PaystackRedirect = () => {
   const [email, setEmail] = useState("");
@@ -543,6 +544,7 @@ const PaystackRedirect = () => {
           </p>
         </div>
       </div>
+      <Form />
     </>
   );
 };

@@ -151,7 +151,7 @@ const ImageUpload = ({ value, onChange }) => {
 
 // ─── CONFIRM DELETE ───────────────────────────────────────────────────────────
 const ConfirmModal = ({ open, name, onConfirm, onCancel }) => (
-  <Modal open={open} onClose={onCancel} title="CONFIRM DELETE">
+  <Modal open={open} onClose={onCancel} title="CONFIRM DELETE!">
     <p style={{ fontFamily: "'DM Mono', monospace", color: "#aaa", fontSize: 13, marginBottom: 24 }}>
       You are about to permanently delete <span style={{ color: "#ff3b47", fontWeight: 700 }}>"{name}"</span>. This cannot be undone.
     </p>

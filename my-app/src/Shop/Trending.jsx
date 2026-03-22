@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext}from 'react'
-import burger3 from "../assets/images/burger3.jpg"
-import ferari from "../assets/images/ferari.jpg"
-import lambogini from "../assets/images/lambogini.jpg"
-import sweets from "../assets/images/sweets.jpg"
+// import burger3 from "../assets/images/burger3.jpg"
+// import ferari from "../assets/images/ferari.jpg"
+// import lambogini from "../assets/images/lambogini.jpg"
+// import sweets from "../assets/images/sweets.jpg"
 import { CartContext } from '../Context/Context'
 
 const Trending = () => {

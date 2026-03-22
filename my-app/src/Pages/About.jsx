@@ -18,7 +18,7 @@ const About = () => {
     }, [])
 
   return (
-    <div className='mt-28 px-4 sm:px-6 lg:px-12'>
+    <div className='mt-28 px-4 sm:px-6 lg:px-12' id='about'>
         <h1 className='text-center text-2xl sm:text-3xl font-bold mb-10'>About Us</h1>
         <div className=' flex justify-between font-light text-gray-700 space-y-3 text-sm sm:text-base leading-relaxed'>
             <div>

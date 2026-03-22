@@ -254,6 +254,7 @@
 
 import { createContext, useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useParams } from "react-router-dom"; // added
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -348,6 +349,11 @@ export const CartProvider = ({ children }) => {
         (item.price !== undefined ? item.price : item.new_price) * item.quantity,
       0
     );
+
+    const cartPayload = () => { ///added
+      const { id } = useParams()
+
+    }
 
   // ── Wishlist actions ──────────────────────────────────────────────────────
 

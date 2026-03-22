@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../../Pages/Navbar";
 import Footer from "../Footer";
-import Tradeacc from "./Tradeacc/Tradeacc";
+import Tradeacc from "../Waste/Tradeacc/Tradeacc";
 import Artacc from "./Artacc/Artacc";
 import Blogs from "./Blogs";
 

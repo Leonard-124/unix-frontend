@@ -133,7 +133,7 @@ const Artpost = () => {
             type="file"
             id="image"
             name="image"
-            accept="image/*"
+            accept="image/*" //
             onChange={handleChange}
             className="border rounded px-3 py-2"
           />

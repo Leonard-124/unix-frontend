@@ -61,12 +61,12 @@ const CreatorProfile = () => {
       // Filter creator's artworks
       const creatorArtworks = artworksRes.data.filter(
         (art) => art.auth0Id === foundCreator.auth0Id
-      );
+      ); ///
 
       // Determine creator type
       const hasArtwork = creatorArtworks.some(
         (art) => art.type && art.type.toLowerCase() !== "invention"
-      );
+      );//
       const hasInvention = creatorArtworks.some(
         (art) => art.type && art.type.toLowerCase() === "invention"
       );

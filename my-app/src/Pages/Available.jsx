@@ -170,7 +170,7 @@ const Available = () => {
         .avail-card { animation: fadeUp 0.5s ease both; }
       `}</style>
 
-      <section
+      <section id="available"
         className="bg-[#fafaf8] py-20 px-6 sm:px-10 lg:px-16"
         style={{ fontFamily: "'DM Mono', monospace" }}
       >

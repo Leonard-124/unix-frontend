@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import Form from "./Form"; //ADDED THIS
 
 const Paystackredirect2 = () => {
   const [email, setEmail] = useState("");
@@ -306,6 +307,7 @@ const Paystackredirect2 = () => {
           </p>
         </div>
       </div>
+      <Form/> {/*  Added this form*/}
     </>
   );
 };

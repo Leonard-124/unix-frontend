@@ -30,7 +30,7 @@ const Message = () => {
         }
     }
   return (
-    <div className='fixed bottom-28 right-6 z-50'>
+    <div className='fixed bottom-28 right-6 z-50' id='message'>
         {/*Floating button*/}
         {!open && (
             <button onClick={() => setOpen(true)}
@@ -40,7 +40,7 @@ const Message = () => {
             </button>
         )}
         {open && (
-            <div className='bg-white shadow-xl rounded-lg p-5 w-80 animate-none'>
+            <div className='bg-white shadow-xl rounded-lg p-5 w-80 animate-none' >
                 <h2>Chat With Us, tell us how can we help you?</h2>
                 <form onSubmit={handleSubmit}>
                     <textarea type="text"
