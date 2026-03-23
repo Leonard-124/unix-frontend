@@ -322,7 +322,7 @@ const Cardo = () => {
               <div className="flex gap-4">
                 {/* FIX: WhatsApp href corrected — was "/in/number", should be just the number */}
                 <a
-                  href="https://wa.me/254790630415"
+                  href="https://wa.me/254798878676"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase border border-neutral-200 px-4 py-2.5 text-neutral-600 hover:border-neutral-800 hover:text-neutral-900 transition-all"
@@ -333,7 +333,7 @@ const Cardo = () => {
                   WhatsApp
                 </a>
                 <a
-                  href="tel:+254790630415"
+                  href="tel:+254798878676"
                   className="flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase border border-neutral-200 px-4 py-2.5 text-neutral-600 hover:border-neutral-800 hover:text-neutral-900 transition-all"
                 >
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
