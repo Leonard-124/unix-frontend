@@ -249,7 +249,7 @@ const Collectionlist = () => {
                       <div className="flex items-center border border-neutral-200">
                         <button
                           onClick={() =>
-                            handleQuantityChange(
+                            handleQuantityChange(  //noted
                               item._id || item.id,
                               item.quantity - 1
                             )

@@ -99,7 +99,7 @@ const Artcard = () => {
   }, [id]);
 
   if (loading)
-    return <p className="text-center mt-24 text-gray-500">Loading...</p>;
+    return <p className="text-center mt-24 text-gray-500">Loading...please wait</p>;
   if (error)
     return <p className="text-center mt-24 text-red-500">❌ {error}</p>;
   if (!item)

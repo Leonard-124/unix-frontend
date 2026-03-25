@@ -160,7 +160,7 @@ const UserProfile = () => {
 
     // Validate username
     if (!username || username.trim().length < 3) {
-      setError("Username must be at least 3 characters");
+      setError("Username must be at least 3 characters.");
       setSavingUsername(false);
       return;
     }

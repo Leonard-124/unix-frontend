@@ -24,9 +24,9 @@ const Paystackredirect2 = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const reference = params.get("reference");
-    const id = params.get("id");
-    const totalParam = params.get("total");
+    const reference = params.get("reference");//why not getAll
+    const id = params.get("id");//why not getAll
+    const totalParam = params.get("total");//why not getAll
 
     // FIX: verify first, skip everything else
     if (reference) {
@@ -56,10 +56,10 @@ const Paystackredirect2 = () => {
         const base = parseFloat((parsed / 1.05).toFixed(2));
         setItemPrice(base);
         setTotal(parsed);
-        if (user?.email) setEmail(user.email);
+        if (user?.email) setEmail(user.email); //note
       }
       try {
-        const itemsParam = params.get("items");
+        const itemsParam = params.get("items"); //use getAll
         if (itemsParam) setCartItems(JSON.parse(decodeURIComponent(itemsParam)));
       } catch {
         setError("Could not read cart items. Please go back and try again.");
@@ -67,13 +67,13 @@ const Paystackredirect2 = () => {
       return;
     }
 
-    // Coming from single-artwork buy
+    // Coming from single-artwork buy <>
     if (id) fetchArtPrice(id);
   }, [location.search]);
 
   const fetchArtPrice = async (id) => {
     try {
-      const res = await fetch(`${BASE_URL}/api/art/${id}`);
+      const res = await fetch(`${BASE_URL}/api/art/${id}`); //what if we fetch all pieces added to cart
       if (!res.ok) throw new Error(`Error fetching art: ${res.status}`);
       const data = await res.json();
       setArtDetails(data);

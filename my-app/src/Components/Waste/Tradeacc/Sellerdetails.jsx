@@ -78,7 +78,10 @@ const Sellerdetails = () => {
     try {
       const res = await fetch('http://localhost:3000/api/products', {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
       const data = await res.json()
       if (res.ok) {

@@ -39,7 +39,7 @@ const Artworkscard = () => {
       <Navbar />
       <div className='mt-24'>
         <div>
-          <p className='text-center text-xl font-bold tracking-tight'>Order details</p>
+          <p className='text-center text-xl font-bold tracking-tight'>Order details:</p>
           <div className='mt-5'>
             <hr />
             <div className='flex justify-between mb-5 pb-5 m-1'>
@@ -68,7 +68,7 @@ const Artworkscard = () => {
             </div>
             <div>
               <Link
-                to={`/paystack-redirect/?id=${id}`}
+                to={`/paystack-redirect/?id=${id}`} //condition for multiple IDs
                 className='bg-red-500 text-white py-2 px-4 rounded m-2 hover:bg-red-400'
               >
                 Check out

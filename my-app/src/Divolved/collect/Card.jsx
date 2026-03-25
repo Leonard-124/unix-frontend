@@ -101,7 +101,7 @@ const Card = () => {
             <p className='text-xl text-gray font-mono'>Size: {inventionItem.size}</p>
             <p className='text-xl text-gray font-mono'>Price: {inventionItem.price}</p>
             <Link
-              to={`/invention/${inventionItem._id}`}
+              to={`/invention/${inventionItem._id}`} // can be manipulated.
               className='text-white bg-black rounded p-4 text-xl mr-5 ml-5 hover:bg-[#535353]'
             >
               Buy Now
@@ -113,4 +113,4 @@ const Card = () => {
   )
 }
 
-export default Card
+export default Card;

@@ -261,9 +261,10 @@ const PaystackRedirect = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const reference = params.get("reference");
-    const id = params.get("id");
+    const reference = params.get("reference"); //what if we use getAll
+    const id = params.get("id"); // use getAll
     const totalParam = params.get("total");
+    //const imageParam = params.get("image") -> gets img(single)  use getAll
 
     // FIX: verify first, skip everything else
     if (reference) {
@@ -272,7 +273,7 @@ const PaystackRedirect = () => {
     }
 
     // FIX: handle both paymentId casing variants cleanly
-    const paymentId =
+    const paymentId = //what if I use getAll
       params.get("paymentId") ||
       params.get("paymentID") ||
       params.get("payment_id");
@@ -365,7 +366,7 @@ const PaystackRedirect = () => {
       }
     } catch (err) {
       console.error("Payment initialization error:", err);
-      setError("Network error. Please try again.");
+      setError("Network error. Please try again!");
     } finally {
       setLoading(false);
     }
@@ -434,7 +435,7 @@ const PaystackRedirect = () => {
           </div>
 
           {/* Art preview */}
-          {artDetails && (
+          {artDetails && (  //gets image and name*
             <div className="flex gap-4 items-center border border-neutral-100 bg-white p-4 mb-8">
               <div className="w-20 h-20 flex-shrink-0 overflow-hidden bg-neutral-100">
                 <img
@@ -540,7 +541,7 @@ const PaystackRedirect = () => {
 
           {/* Trust note */}
           <p className="font-mono text-[9px] tracking-widest text-neutral-300 uppercase text-center mt-6">
-            🔒 Your payment is secured by Paystack
+             Your payment is secured by Paystack
           </p>
         </div>
       </div>
