@@ -579,7 +579,7 @@ export default function ArtifactForm() {
     } else if (name === "quantity") {
       // Only allow positive integers for quantity
       const numericValue = value.replace(/[^0-9]/g, "");
-      setFormData((prev) => ({ ...prev, [name]: numericValue || "1" }));
+      setFormData((prev) => ({ ...prev, [name]: numericValue || "0" })); //or null
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -639,10 +639,10 @@ export default function ArtifactForm() {
     data.append("weight", formData.weight);
     data.append("description", formData.description);
     data.append("price", `$${parseFloat(formData.price).toFixed(2)}`);
-    data.append("quantity", formData.quantity || "1");
+    data.append("quantity", formData.quantity || "0");
     
     // Add auth0Id from the authenticated user
-    data.append("auth0Id", user.sub);
+    data.append("auth0Id", user.sub); //why?
 
     if (formData.personType === "inventor") {
       data.append("type", "invention");
@@ -698,7 +698,7 @@ export default function ArtifactForm() {
       // Scroll to top to show success message
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
-      console.error("❌ Submission error:", err);
+      console.error("Submission error:", err);
       setStatus("error");
       setError(err.message);
     }
@@ -738,7 +738,7 @@ export default function ArtifactForm() {
           )}
           {status === "error" && error && (
             <div className="bg-red-50 border border-red-200 rounded p-4 mb-4">
-              <p className="text-red-500 text-center">❌ {error}</p>
+              <p className="text-red-500 text-center"> {error}</p>
             </div>
           )}
 

@@ -31,7 +31,7 @@
 //   const { id } = useParams()
 //   const query = useQuery()
 //   const plan = query.get('plan') || 'basic'
-//   const gig = gigs.find(g => g.id === parseInt(id))
+//   const gig = gigs.find(g => g.id === parseInt(id))   
 
 //   return (
 //     <>
@@ -62,4 +62,4 @@
 //   )
 // }
 
-// export default Checkoutnow
+// export default Checkoutnow;

@@ -190,7 +190,7 @@ const Artistinventor = () => {
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-6"></div>
             <p className="text-gray-700 text-xl font-medium">
-              Loading creators...
+              Loading creators...please wait.
             </p>
           </div>
         </div>
@@ -204,7 +204,7 @@ const Artistinventor = () => {
         <Navbar />
         <div className="mt-24 px-4 max-w-4xl mx-auto">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-            <p className="text-red-600 text-lg">❌ {error}</p>
+            <p className="text-red-600 text-lg"> {error}</p>
           </div>
         </div>
       </>

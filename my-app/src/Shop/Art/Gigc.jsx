@@ -38,7 +38,7 @@ const Gigc = () => {
         const data = await res.json()
         setGig(data)
       } catch (err) {
-        setError('Could not load gig details.')
+        setError('Could not load gig details?')
       } finally {
         setLoading(false)
       }

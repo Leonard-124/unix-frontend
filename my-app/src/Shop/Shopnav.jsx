@@ -18,7 +18,7 @@ const Shopnav = () => {
     <div className='fixed top-0 left-0 right-0 z-50 mb-3 bg-white'>
           <div className=' flex justify-between max-h-60 items-center mt-4'>
       <div className='ml-8 '>
-        <span className='text-5xl tracking-[3px]  '>UnIx</span>
+        <span className='text-5xl tracking-[3px]  '>UnIxArt</span>
         </div>
       <div>
         <input

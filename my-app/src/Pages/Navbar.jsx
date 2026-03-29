@@ -446,7 +446,7 @@ const Navbar = () => {
                   <HiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-gray-600 transition-colors" />
                   <input
                     type="text"
-                    placeholder="Search artworks, artists..."
+                    placeholder="Search artworks, woodworks..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg bg-gray-50/50 text-sm
@@ -624,7 +624,7 @@ const Navbar = () => {
                 to="/buy"
                 className="block px-4 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg transition-colors"
               >
-                General
+                BuyNow
               </Link>
               <Link
                 to="/artworks"

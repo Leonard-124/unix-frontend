@@ -26,7 +26,7 @@ const Checkout = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const reference = params.get('reference');
+    const reference = params.get('reference');//returns first value associated to the given search parameter.
     if (reference) {
       verifyPaystackPayment(reference);
       return;
@@ -62,7 +62,7 @@ const Checkout = () => {
     if (selectedMethod === 'card') {
       const { email } = cardDetails;
       if (!email) {
-        setError('Please enter your email.');
+        setError('Please enter your email...');
         return;
       }
       setLoading(true);
@@ -80,7 +80,7 @@ const Checkout = () => {
         if (res.ok && data.authorization_url) {
           window.location.href = data.authorization_url;
         } else {
-          setError(data.error || 'Paystack initialization failed.');
+          setError(data.error || 'Paystack initialization failed!');
         }
       } catch (err) {
         setError('Network error, please try again.');

@@ -10,7 +10,7 @@ const Form = () => {
     const [error, setError] = useState("")
     const [form, setForm] = useState({
       username: "",
-      phone: Number,
+      phone: "",
       address: "",
       country: "",
       city: "",
@@ -92,6 +92,7 @@ const Form = () => {
               placeholder='Enter your local address...'
               onChange={(e) => setForm(e.target.value)}
               value={form.address}
+              required
               />
               <input type="text"
               placeholder='Postal code / Zip code'
@@ -731,3 +732,648 @@ export default Form
   // };
 ///////////////////
 // if (user?.email) setEmail(user.email); //note
+//////////////////
+// window.location.href = data.authorization_url;
+/////////////////
+// {[0, 1, 2].map((i) => (
+//             <span
+//               key={i}
+//               className="w-2 h-2 rounded-full bg-neutral-800 animate-bounce"
+//               style={{ animationDelay: `${i * 0.15}s` }}
+//             />
+//           ))}
+/////////////////
+  // <label className="font-mono text-[9px] tracking-[0.2em] uppercase text-neutral-400">
+  //   Email address
+  // </label>
+  // <input
+  //   type="email"
+  //   name="email"
+  //   placeholder="your@email.com"
+  //   value={email}
+  //   onChange={(e) => setEmail(e.target.value)}
+  //   className="w-full border border-neutral-200 bg-[#fafaf8] px-4 py-3 text-sm text-neutral-900 outline-none focus:border-neutral-800 transition-colors font-mono placeholder:text-neutral-300"
+  //   required
+  // />
+/////////////////
+  // const getItemPrice = (item) =>
+  //   Number(String(item.price ?? item.new_price ?? 0).replace(/[^0-9.]/g, ""))
+//  {wishlist.length} saved work{wishlist.length !== 1 ? "s" : ""}
+// onClick={() => addToCart(item)}
+// onClick={() => removeFromWishlist(item._id || item.id)}
+// onClick={() => wishlist.forEach((item) => addToCart(item))}
+///////////////
+  // if (user?.email_verified) {
+  //   return null;
+  // }
+  /////////////
+  //     const response = await fetch(
+  //       `https://${import.meta.env.VITE_AUTH0_DOMAIN}/api/v2/jobs/verification-email`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({
+  //           user_id: user.sub,
+  //         }),
+  //       }
+  //     );
+
+  //     if (response.ok) {
+  //       setMessage("✅ Verification email sent! Check your inbox.");
+  //     } else {
+  //       setMessage("❌ Failed to send email. Please try again later.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error resending verification email:", error);
+  //     setMessage("❌ An error occurred. Please try again.");
+  //   } finally {
+  //     setSending(false);
+  //   }
+  // };
+//////////////////////////
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/login" replace />;
+  // }
+//////////////////
+// export const EmailVerifiedRoute = ({ children }) => { 
+//   return children; //why return children
+// }
+/////////////////
+    // const res = await axios.get(
+    //   `${import.meta.env.VITE_API_BASE_URL}/api/orders`,
+    //   {
+    //     headers: { Authorization: `Bearer ${token}` },
+    //   }
+    // );
+
+    // setOrders(res.data.orders);
+    //  setError(err.response?.data?.message || "Failed to load orders");
+    // <button
+    //   onClick={() => window.location.reload()}
+    //   className="mt-4 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition"
+    // >
+    //   Retry
+    // </button>
+/////////////////////img for orders
+//  <img
+//     src={order.artDetails?.image || order.artId?.image}
+//     alt={order.artDetails?.name || order.artId?.name}
+//     className="w-full h-full object-cover"
+//   />
+//////
+//  <span>Inventor: {order.artDetails.inventor}</span>
+//  {order.status === "success" ? "✓ Completed" : order.status}
+
+  // {new Date(order.createdAt).toLocaleDateString("en-US", {
+  //   year: "numeric",
+  //   month: "long",
+  //   day: "numeric",
+  // })}
+///////////////
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const token = await getAccessTokenSilently();
+  //     const res = await fetch(`https://unix.up.railway.app/api/art/${id}`, {
+  //       method: "DELETE",
+  //       headers: { Authorization: `Bearer ${token}` },
+  //     });
+  //     if (!res.ok) throw new Error("Failed to delete");
+  //     setWorks((prev) => prev.filter((item) => item._id !== id));
+  //   } catch (err) {
+  //     setError(err.message);
+  //   }
+  // };
+//////////////
+  // const handleEdit = (item) => {
+  //   setEditingId(item._id);
+  //   setEditForm({
+  //     name: item.name,
+  //     description: item.description,
+  //     price: item.price,
+  //     image: item.image,
+  //   });
+  // };
+///////////////
+  // const handleUpdate = async (id) => {
+  //   try {
+  //     const token = await getAccessTokenSilently();
+  //     const res = await fetch(`https://unix.up.railway.app/api/art/${id}`, {
+  //       method: "PUT",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //       body: JSON.stringify(editForm),
+  //     });
+  //     if (!res.ok) throw new Error("Failed to update");
+  //     const updated = await res.json();
+  //     setWorks((prev) =>
+  //       prev.map((item) => (item._id === id ? updated : item))
+  //     );
+  //     setEditingId(null);
+  //   } catch (err) {
+  //     setError(err.message);
+  //   }
+  // };
+/////////////////
+// {editingId === item._id ? (
+//   <>
+//     <input
+//       type="text"
+//       value={editForm.name}
+//       onChange={(e) =>
+//         setEditForm({ ...editForm, name: e.target.value })
+//       }
+//       className="w-full border rounded px-3 py-2 mb-3 focus:ring-2 focus:ring-blue-400 outline-none"
+//     />
+//////////////////
+  // <button
+  //   className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+  //   onClick={() => handleUpdate(item._id)}
+  // >
+  //   Save
+  // </button>
+  // <button
+  //   className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition"
+  //   onClick={() => setEditingId(null)}
+  // >
+  //   Cancel
+  // </button>
+////////////////
+//  onClick={() => handleEdit(item)}
+//   onClick={() => handleDelete(item._id)}
+///////////////
+// users.forEach((user) => {
+//   const userArtworks = artworks.filter(
+//     (art) => art.auth0Id === user.auth0Id
+//   );
+//////////////
+//  const hasInvention = userArtworks.some(
+// (art) => art.type && art.type.toLowerCase() === "invention"
+// );
+/////////////
+// const creatorsMap = new Map();
+// creatorsMap.set(user.auth0Id, {
+//   ...user,
+//   artworks: userArtworks,
+//   creatorType,
+//   totalWorks: userArtworks.length,
+//   followerCount: user.followers ? user.followers.length : 0,
+//   followingCount: user.following ? user.following.length : 0,
+// });
+// setCreators(Array.from(creatorsMap.values()));
+//////////////
+// const statusPromises = creators.map(async (creator) => {
+// if (creator.auth0Id === user?.sub) return null;
+//////////////
+        
+// try {
+//   const res = await axios.get(
+//     `${import.meta.env.VITE_API_BASE_URL}/api/users/follow/status/${creator.auth0Id}`,
+//     { headers: { Authorization: `Bearer ${token}` } }
+//   );
+//   return { [creator.auth0Id]: res.data.isFollowing };
+// } catch (err) {
+//   return { [creator.auth0Id]: false };
+// }
+// });
+  //     const results = await Promise.all(statusPromises);
+  //     const statusMap = results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+  //     setFollowStatus(statusMap);
+  //   } catch (err) {
+  //     console.error("Error fetching follow status:", err);
+  //   }
+  // };
+    // setFollowLoading({ ...followLoading, [creatorAuth0Id]: true });
+//////////////
+  //   try {
+  //     const token = await getAccessTokenSilently({
+  //       authorizationParams: {
+  //         audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+  //       },
+  //     });
+
+  //     const res = await axios.post(
+  //       `${import.meta.env.VITE_API_BASE_URL}/api/users/follow`,
+  //       { targetUserId: creatorAuth0Id },
+  //       { headers: { Authorization: `Bearer ${token}` } }
+  //     );
+
+  //     // Update follow status
+  //     setFollowStatus({
+  //       ...followStatus,
+  //       [creatorAuth0Id]: res.data.isFollowing,
+  //     });
+
+  //     // Update follower count in creators list
+  //     setCreators(
+  //       creators.map((creator) =>
+  //         creator.auth0Id === creatorAuth0Id
+  //           ? { ...creator, followerCount: res.data.followerCount }
+  //           : creator
+  //       )
+  //     );
+  //   } catch (err) {
+  //     console.error("Error following user:", err);
+  //     alert("Failed to update follow status");
+  //   } finally {
+  //     setFollowLoading({ ...followLoading, [creatorAuth0Id]: false });
+  //   }
+  // };
+///////////
+{/* <button
+  onClick={() => setFilter("all")}
+  className={`px-6 py-2 rounded-full font-medium transition ${
+    filter === "all"
+      ? "bg-blue-600 text-white"
+      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+  }`}
+>
+  All ({creators.length})
+</button> */}
+///////////
+{/* <button
+  onClick={() => setFilter("inventors")}
+  className={`px-6 py-2 rounded-full font-medium transition ${
+    filter === "inventors"
+      ? "bg-blue-600 text-white"
+      : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+  }`}
+>
+  🔧 Inventors (
+  {
+    creators.filter(
+      (c) => c.creatorType === "inventor" || c.creatorType === "both"
+    ).length
+  }
+  )
+</button> */}
+///////////////
+  // <button
+  //   onClick={() => toggleWorks(creator.auth0Id)}
+  //   className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+  // >
+  //   {expandedCreator === creator.auth0Id
+  //     ? "Hide Works"
+  //     : `View Works (${creator.totalWorks})`}
+  // </button>
+///////////////////////////////
+  // const handleToggleWishlist = (e, item) => {
+  //   e.preventDefault();
+  //   const willSave = !isWishlisted(item);
+  //   toggleWishlist(item);
+  //   showToast(
+  //     willSave ? `Saved — ${item.name}` : `Removed — ${item.name}`,
+  //     "wishlist",
+  //     { saved: willSave }
+  //   );
+  // };
+/////////////////////////////
+  // const handleAddToCart = (item) => {
+  //   addToCart(item);
+  //   showToast(`Added to cart — ${item.name}`, "cart");
+  // };
+// //////////////////////////
+// <button
+//   onClick={(e) => handleToggleWishlist(e, item)}
+//   className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 cursor-pointer
+//     ${isWishlisted(item)
+//       ? "border-red-300 bg-red-50"
+//       : "border-neutral-200 hover:border-neutral-400 bg-white"
+//     }`}
+//   aria-label={ ==> What is Aria
+//     isWishlisted(item)
+//       ? `Remove ${item.name} from saved`
+//       : `Save ${item.name}`
+//   }
+// >
+//   <HeartIcon filled={isWishlisted(item)} />
+// </button>
+// aria-label={`Add ${item.name || "artwork"} to cart`}
+///////////////////////////////
+  // const showToast = (message, type, extra = {}) => {
+  //   const id = Date.now();
+  //   setToasts((prev) => [...prev, { id, message, type, ...extra }]);
+  //   setTimeout(() => setToasts((prev) => prev.filter((t) => t.id !== id)), 2800);
+  // };
+/////////////////////<Toast toasts={toasts} /> <HeartIcon filled={isWishlisted(item)} />Take note.
+////////////////////
+  //   paystack.newTransaction({
+  //     key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY,
+  //     email: user.email,
+  //     amount: 19900, // cents if USD
+  //     currency: "USD",
+  //     onSuccess: async (transaction) => {
+  //       try {
+  //         const res = await fetch("/api/payments/paystack/verify", {
+  //           method: "POST",
+  //           headers: { "Content-Type": "application/json" },
+  //           body: JSON.stringify({ reference: transaction.reference }),
+  //         });
+
+  //         if (!res.ok) throw new Error("Verification request failed");
+
+  //         const data = await res.json();
+  //         if (data.success) {
+  //           navigate("/premium-service");
+  //         } else {
+  //           alert("Verification failed ❌");
+  //         }
+  //       } catch (err) {
+  //         console.error(err);
+  //         alert("Server error ❌ Try again later.");
+  //       } finally {
+  //         setProcessing(false);
+  //       }
+  //     },
+  //     onCancel: () => {
+  //       alert("Payment canceled ❌");
+  //       setProcessing(false);
+  //     },
+  //   });
+  // };
+  // const numericValue = value.replace(/[^0-9.]/g, "");
+//   const decimalCount = (numericValue.match(/\./g) || []).length;
+// if (decimalCount > 1) return;
+////////////////////////
+// window.scrollTo({ top: 0, behavior: "smooth" });
+///////////////////////
+{/* <input
+  type="radio"
+  name="personType"
+  value="inventor"
+  checked={formData.personType === "inventor"}
+  onChange={handleChange}
+  className="mr-2"
+/> */}
+////////////////////
+{/* <button
+  type="button"
+  onClick={() => {
+    setPreview(null);
+    setFormData((prev) => ({ ...prev, image: null }));
+  }}
+  className="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-600 transition"
+>
+  ×
+</button> */}
+////////////////////
+// const query = searchParams.get("q") || "";
+    // const searchArtworks = async () => {
+    //   if (!query.trim()) {
+    //     setResults([]);
+    //     setLoading(false);
+    //     return;
+    //   }
+
+    //   setLoading(true);
+    //   setError("");
+///////////////////
+  //       const filtered = data.filter((item) => {
+  //         const searchLower = query.toLowerCase();
+  //         return (
+  //           item.name?.toLowerCase().includes(searchLower) ||
+  //           item.author?.toLowerCase().includes(searchLower) ||
+  //           item.inventor?.toLowerCase().includes(searchLower) ||
+  //           item.type?.toLowerCase().includes(searchLower) ||
+  //           item.description?.toLowerCase().includes(searchLower)
+  //         );
+  //       });
+
+  //       setResults(filtered);
+  //     } catch (err) {
+  //       setError(err.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   searchArtworks();
+  // }, [query]);
+////////////////////
+// to={isInvention(item) ? `/inventioncard/${item._id}` : `/artworks/${item._id}`}
+// const isInvention = (item) => item.type?.toLowerCase() === "invention";
+////////////////////
+    // const Images = [eastart, mask_art, nicigoten, fotios]
+    // const [imageIndex, setImageIndex] = useState(0)
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setImageIndex((prev) => (prev + 1) % (Images.length))
+    //     }, 6000)
+
+    //     return () => clearInterval(interval)
+    // }, [])
+    //  <img src={Images[imageIndex]} alt={`Product ${imageIndex + 1}`}
+//////////////////////
+// setData(result.slice(0, 4));
+//////////////////////
+  // useEffect(() => {
+  //   const cleanups = cardRefs.current.map((img) => {
+  //     if (!img) return null;
+
+  //     const handleMove = (e) => {
+  //       const rect = img.getBoundingClientRect();
+  //       const x = e.clientX - rect.left - rect.width / 2;
+  //       const y = e.clientY - rect.top - rect.height / 2;
+  //       img.style.transform = `scale(1.04) translate(${x * 0.03}px, ${y * 0.03}px)`;
+  //     };
+  //     const handleLeave = () => {
+  //       img.style.transform = "scale(1) translate(0, 0)";
+  //     };
+
+  //     img.addEventListener("mousemove", handleMove);
+  //     img.addEventListener("mouseleave", handleLeave);
+  //     return () => {
+  //       img.removeEventListener("mousemove", handleMove);
+  //       img.removeEventListener("mouseleave", handleLeave);
+  //     };
+  //   });
+  //   return () => cleanups.forEach((c) => c?.());
+  // }, [data]);
+  //////////////////////
+// {[0, 1, 2].map((i) => (
+// <span
+//   key={i}
+//   className="w-2 h-2 rounded-full bg-neutral-800 animate-bounce"
+//   style={{ animationDelay: `${i * 0.15}s` }}
+// />
+// ))}
+// const cardRefs = useRef([])
+// ref={(el) => (cardRefs.current[i] = el)}
+////////////////////////
+  // if (error) {   //if (isLoading) return;
+  //   console.error("Auth0 callback error:", error);
+  //   navigate("/login");
+  //   return;
+  // }
+// onClick={() => navigate("/login")}
+//     const returnTo = sessionStorage.getItem("returnTo");
+    
+//     if (returnTo) {
+//       sessionStorage.removeItem("returnTo");
+//       navigate(returnTo);
+//     } else {
+//       navigate("/profile");
+//     }
+//   } catch (err) {
+//     console.error("❌ User sync failed:", err);
+//     // Still navigate even if sync fails
+//     const returnTo = sessionStorage.getItem("returnTo");
+//     sessionStorage.removeItem("returnTo");
+//     navigate(returnTo || "/profile");
+//   }
+// }
+// };
+//////////////////
+//useRef, useCallback, 
+//  {slides.map((_, i) => (
+  //  {String(current + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")} ==>info.jsx
+
+/////////////////
+  // const handleLogin = () => {
+  //   sessionStorage.setItem("returnTo", location.pathname);
+  //   loginWithRedirect({
+  //     appState: { returnTo: location.pathname }
+  //   });
+  // };
+{/* <button
+onClick={() =>
+  logout({
+    logoutParams: { returnTo: window.location.origin },
+  })
+} */}
+
+// function useQuery() {
+//   return new URLSearchParams(useLocation().search)
+// }
+
+
+// const packageDetails = {
+//   basic: {
+//     price: "$10",
+//     quality: "Standard",
+//     description: "Basic package with essential features."
+//   },
+//   premium: {
+//     price: "$25",
+//     quality: "High",
+//     description: "Premium package with extra features and faster delivery."
+//   },
+//   deluxe: {
+//     price: "$50",
+//     quality: "Top",
+//     description: "Deluxe package with all features, priority support, and unlimited revisions."
+//   }
+// }
+
+// function useQuery() {
+//   return new URLSearchParams(useLocation().search)
+// }
+
+// const Checkoutnow = () => {
+//   const { id } = useParams()
+//   const query = useQuery()
+//   const plan = query.get('plan') || 'basic'
+//   const gig = gigs.find(g => g.id === parseInt(id))
+// {["basic", "premium", "deluxe"].map(pkg => (
+// {pkg.charAt(0).toUpperCase() + pkg.slice(1)}
+//  to={`/checkout/${gig._id}?plan=${plan}`}//Gigc.jsx
+///////////////////
+// {["basic", "premium", "deluxe"].map(pkg => (
+//   <button
+//     key={pkg}
+//     className={`border px-4 py-2 rounded transition-colors duration-200 ${
+//       plan === pkg
+//         ? "bg-amber-500 text-white border-amber-500"
+//         : "bg-white text-gray-800 hover:bg-amber-100"
+//     }`}
+//     onClick={() => handlePlanChange(pkg)}
+//   >
+//     {pkg.charAt(0).toUpperCase() + pkg.slice(1)}
+//   </button>
+// ))}
+// </div>
+// <div className="bg-gray-100 p-4 rounded mb-4">
+// <h2 className="font-bold text-lg mb-2">{plan.charAt(0).toUpperCase() + plan.slice(1)} Package</h2>
+// <p><span className="font-semibold">Price:</span> {packageDetails[plan].price}</p>
+// <p><span className="font-semibold">Quality:</span> {packageDetails[plan].quality}</p>
+// <p><span className="font-semibold">Description:</span> {packageDetails[plan].description}</p>
+// </div>
+///////////////////
+  // const handleCardChange = (e) => {
+  //   setCardDetails({ ...cardDetails, [e.target.name]: e.target.value });
+  // };
+// Paystackredirect ---> Checkout <></>similarity
+///////////////////
+// const resp = await fetch(`${BASE_URL}/api/payments/paypal/create?amount=${encodeURIComponent(subtotal)}`, {
+//   method: 'GET',
+//   headers: { 'Content-Type': 'application/json' },
+// })
+///////////////////
+// if (!/^2547\d{8}$/.test(phone)) {
+//   setError('Enter a valid phone number in the format 2547XXXXXXXX');
+//   return;
+//////////////////
+// try {
+//   const res = await fetch(`${BASE_URL}/api/payments/mpesa`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({ phone, amount: subtotal })
+//   });
+// const params = new URLSearchParams(location.search);
+/////////////////
+// const res = await fetch(`${BASE_URL}/api/payments/paystack/initialize`, {
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify({
+//     email,
+//     amount: subtotal,
+//     callback_url: 'http://localhost:5173/checkout'
+//   })
+// }); 
+////////////////
+{/* <button
+onClick={() => handleQuantityChange(item._id || item.id, item.quantity - 1)} */}
+////////////////
+{/* <input
+  type="number"
+  min="1"
+  value={item.quantity}
+  onChange={e => handleQuantityChange(item._id || item.id, Number(e.target.value))}
+  className="w-12 text-center border-t border-b"
+/> */}
+///////////////
+{/* <button
+  onClick={() => handleQuantityChange(item._id || item.id, item.quantity + 1)}
+  className="px-2 py-1 bg-gray-200 rounded-r hover:bg-gray-300"
+  aria-label="Increase quantity"
+>+</button> */}
+///////////////
+// const params = new URLSearchParams(location.search);
+// const reference = params.get("reference");
+// .then, .catch, .finally --->Success.jsx
+///////////////////
+{/* <input
+  type="text"
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+  placeholder={`Search ${selectedCategory.toLowerCase()}...`}
+  className="border rounded px-4 py-2 w-full"
+  onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+/> */}
+{/* <ProductCard key={product._id} product={product} /> */}
+////////////////// Group</> </>ProductPath</>
+// setProducts(Array.isArray(data) ? data : []);
+// const scrollByOffset = (offset) => {
+//   if (scrollerRef.current) {
+//     scrollerRef.current.scrollBy({ left: offset, behavior: 'smooth' });
+//   }
+// };
+//////////////////
+// const filteredProducts = products.filter(product =>
+//   (product.name || '').toLowerCase().includes((search || '').toLowerCase())
+// );

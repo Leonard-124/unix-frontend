@@ -74,10 +74,10 @@ const Search = () => {
         {loading ? (
           <p className="text-center text-gray-500 mt-6">Searching...</p>
         ) : error ? (
-          <p className="text-center text-red-500 mt-6">❌ {error}</p>
+          <p className="text-center text-red-500 mt-6">{error}</p>
         ) : !query.trim() ? (
           <p className="text-center text-gray-500 mt-6 text-lg">
-            Enter a search term to find artworks and inventions.
+            Try to modify your search query to find your desired collection.
           </p>
         ) : results.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

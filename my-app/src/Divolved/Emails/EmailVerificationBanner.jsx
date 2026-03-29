@@ -13,7 +13,7 @@ const EmailVerificationBanner = () => {
   }
 
   const resendVerificationEmail = async () => {
-    setSending(true);
+    setSending(true); 
     setMessage("");
 
     try {
@@ -41,7 +41,7 @@ const EmailVerificationBanner = () => {
       if (response.ok) {
         setMessage("✅ Verification email sent! Check your inbox.");
       } else {
-        setMessage("❌ Failed to send email. Please try again later.");
+        setMessage(<><p>Failed to send email. Please try again later</p></>);
       }
     } catch (error) {
       console.error("Error resending verification email:", error);

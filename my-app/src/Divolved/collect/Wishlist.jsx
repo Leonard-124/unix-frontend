@@ -167,7 +167,7 @@ const Wishlist = () => {
                   Add All to Cart
                 </button>
                 <Link
-                  to="/artworks"
+                  to="/buy"
                   className="text-[10px] tracking-[0.18em] uppercase border-b border-neutral-400 text-neutral-400 hover:text-neutral-800 hover:border-neutral-800 transition-colors pb-0.5"
                 >
                   Continue Browsing

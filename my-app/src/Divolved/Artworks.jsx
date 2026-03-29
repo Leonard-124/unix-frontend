@@ -389,7 +389,7 @@ const Artworks = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
 
       <main className="min-h-screen bg-[#fafaf8] px-6 sm:px-10 lg:px-16 pt-28 pb-24 max-w-screen-xl mx-auto">
 

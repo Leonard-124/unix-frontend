@@ -230,7 +230,7 @@ const Posted = () => {
       const data = await res.json();
       setWorks(data);
     } catch (err) {
-      console.error("❌ fetchWorks error:", err);
+      console.error("fetchWorks error:", err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -281,7 +281,7 @@ const Posted = () => {
         },
         body: JSON.stringify(editForm),
       });
-      if (!res.ok) throw new Error("Failed to update");
+      if (!res.ok) throw new Error("Failed to update works.");
       const updated = await res.json();
       setWorks((prev) =>
         prev.map((item) => (item._id === id ? updated : item))

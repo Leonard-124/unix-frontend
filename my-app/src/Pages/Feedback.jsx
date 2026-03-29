@@ -30,7 +30,7 @@ const Feedback = () => {
         setStatus("");
       }, 2000);
     } catch (err) {
-      setStatus("❌ Failed to send feedback");
+      setStatus("Failed to send feedback");
     }
   };
 
@@ -54,6 +54,7 @@ const Feedback = () => {
           <form onSubmit={handleSubmit} className="space-y-3">
             <input
               type="email"
+              name="email"
               placeholder="Your email (optional)"
               value={email}
               onChange={(e) => setEmail(e.target.value)}

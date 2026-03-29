@@ -113,7 +113,7 @@ const Paystackredirect2 = () => {
           email,
           amount: total,
           // Single artwork flow
-          ...(artDetails ? { artId: artDetails._id, quantity: 1 } : {}),
+          ...(artDetails ? { artId: artDetails._id, quantity: 1 } : {}), // paystack is receiving a single artwork qty</>
           // Cart flow — array of { artId, quantity }
           ...(cartItems.length > 0 ? { items: cartItems } : {}),
         }),
@@ -145,7 +145,10 @@ const Paystackredirect2 = () => {
     } catch {
       navigate("/failure");
     } finally {
-      setVerifying(false);
+      setTimeout(() => { //introduced this bag</>
+        setVerifying(false)
+      },2000)
+      // setVerifying(false);
     }
   };
 
@@ -303,7 +306,7 @@ const Paystackredirect2 = () => {
 
           {/* Trust note */}
           <p className="font-mono text-[9px] tracking-widest text-neutral-300 uppercase text-center mt-6">
-            🔒 Your payment is secured by Paystack
+             Your payment is secured by Paystack
           </p>
         </div>
       </div>

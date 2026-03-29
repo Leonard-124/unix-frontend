@@ -6,7 +6,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Navbar from "../../Pages/Navbar";
 
-const Order = () => {
+const Order = () => {   ///needs to be relooked
   const { getAccessTokenSilently, isAuthenticated, user } = useAuth0();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +14,7 @@ const Order = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      if (!isAuthenticated) return;
+      if (!isAuthenticated) return; // returns null,void
 
       try {
         const token = await getAccessTokenSilently({
@@ -47,7 +47,7 @@ const Order = () => {
       <>
         <Navbar />
         <div className="mt-24 text-center text-lg text-gray-600">
-          Please log in to view your orders.
+          Please log in to view your orders!
         </div>
       </>
     );
@@ -60,7 +60,7 @@ const Order = () => {
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mx-auto mb-6"></div>
-            <p className="text-gray-700 text-xl font-medium">Loading your orders...</p>
+            <p className="text-gray-700 text-xl font-medium">Loading your orders...please wait.</p>
           </div>
         </div>
       </>
@@ -73,7 +73,7 @@ const Order = () => {
         <Navbar />
         <div className="mt-24 px-4 max-w-4xl mx-auto">
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
-            <p className="text-red-600 text-lg">❌ {error}</p>
+            <p className="text-red-600 text-lg">Warning: {error}</p>
             <button
               onClick={() => window.location.reload()}
               className="mt-4 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition"
@@ -117,7 +117,7 @@ const Order = () => {
                 No Orders Yet
               </h2>
               <p className="text-gray-500 mb-6">
-                You haven't made any purchases yet. Start exploring our collection!
+                You haven't made any purchases yet. Start exploring our collections!
               </p>
               <Link
                 to="/buy"
@@ -196,7 +196,7 @@ const Order = () => {
                       <div>
                         <p className="text-gray-500">Amount Paid</p>
                         <p className="font-semibold text-lg text-blue-600">
-                          KSH{(order.amount / 100).toFixed(2)}
+                          KSH{(order.amount / 100).toFixed(2)} {/*Is it KSH or USD */}
                         </p>
                       </div>
 
