@@ -3,30 +3,36 @@ import React, { useState } from 'react'
 
 const Message = () => {
     const [open, setOpen] = useState(false);
+    const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
     //const [email, setEmail] = useState("")
     const [status, setStatus] = useState("")
+    const [success, setSuccess] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setStatus("Sending message...")
 
         try {
-            const res = await fetch("https://unix.up.railway.app/api/message",{
+            const res = await fetch("https://unix.up.railway.app/api/feedbacks",{
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({message})
+                body: JSON.stringify({email, message})
         });
         if (!res.ok) throw new Error("Failed to send Message");
         setStatus("Message sent, awaiting reply.")
+        setSuccess(false)
         setMessage("")
         setTimeout(() => {
             setOpen(false);
             setStatus("")
-        }, 2000)
+        }, 4000)
         } catch (err) {
             setStatus("Failed to send the message? Request mulfunction is being looked at.")
             console.error(err)
+        }
+        finally {
+            setSuccess(true)
         }
     }
   return (
@@ -41,13 +47,21 @@ const Message = () => {
         )}
         {open && (
             <div className='bg-white shadow-xl rounded-lg p-5 w-80 animate-none' >
-                <h2>Chat With Us, tell us how can we help you?</h2>
+                <h2>Tell us how can we help you?</h2>
                 <form onSubmit={handleSubmit}>
+                    <input type="text"
+                    name='email'
+                    placeholder='Enter your email...'
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    className='w-full border rounded focus:ring-green-300 outline-none mb-2'
+                     />
                     <textarea type="text"
-                    placeholder='Enter message...'
+                    placeholder={`Enter message...`}
                     onChange={(e)=> setMessage(e.target.value)}
                     value={message}
                     className='w-full border rounded px-3 py-2 h-24 resize-none focus:ring-2 focus:ring-green-400 outline-none'
+                    maxLength={550}
                     />
                     <div className='flex justify-between gap-2'>
                         <button onClick={() => setOpen(false)}
@@ -61,6 +75,7 @@ const Message = () => {
                             Send
                         </button>
                     </div>
+                    {success && !status && <p className="text-[#34d30d] text-[12px] tracking-[-1px]">Success, we'll get back to you shortly</p>}
                 </form>
                 {status && (
                     <p className='mt-2 text-sm text-red-600 text-center'>{status}</p>

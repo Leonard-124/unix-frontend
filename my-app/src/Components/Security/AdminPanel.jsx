@@ -709,6 +709,7 @@ const AdminPanel = () => {
     { id: "artworks", label: "Artworks", icon: Icons.art },
     { id: "users", label: "Users", icon: Icons.user },
     { id: "orders", label: "Orders", icon: Icons.check },
+    {id: "feedbacks", label: "Feedbacks", icon: Icons.user}
   ];
 
   return (
@@ -719,7 +720,7 @@ const AdminPanel = () => {
         {/* Header */}
         <header style={{ borderBottom: "1px solid #111", padding: "0 28px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 58, position: "sticky", top: 0, background: "#08080899", backdropFilter: "blur(12px)", zIndex: 100 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontWeight: 700, fontSize: 13, color: "#00c896", letterSpacing: 3 }}>UNIX ADMIN</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontWeight: 700, fontSize: 13, color: "#00c896", letterSpacing: 3 }}>UNIXART ADMINS</div>
             <div style={{ width: 1, height: 20, background: "#1e1e1e" }} />
             <nav style={{ display: "flex", gap: 4 }}>
               {tabs.map(t => (
@@ -748,18 +749,75 @@ const AdminPanel = () => {
               {tabs.find(t => t.id === tab)?.label}
             </h1>
             <span style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "#444" }}>
-              CRUD Management Console
+              CRUD CONSOLE
             </span>
           </div>
 
           {tab === "artworks" && token && <ArtworksTab token={token} addToast={addToast} />}
           {tab === "users"    && token && <UsersTab token={token} addToast={addToast} />}
           {tab === "orders"   && token && <OrdersTab token={token} addToast={addToast} />}
+           {tab === "feedbacks"   && token && <FeedBacksTab token={token} addToast={addToast} />}
         </main>
       </div>
       <Toast toasts={toasts} remove={removeToast} />
     </>
   );
 };
+
+
+
+
+const FeedBacksTab = () => {
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
+  const [info, setInfo] = useState([])
+
+  useEffect(() => {
+    const getFeedbacks = async() => {
+      try{
+        const res = await fetch("http://localhost:3000/api/feedbacks")
+        if (!res.ok) throw new Error(`http error ${res.statusText}`);
+        const result =  await res.json()
+        setInfo(result)
+        setLoading(true)
+        
+      }catch (err) {
+        console.error(err)
+        setError("Failed to fetch information, request mulfunctioned")
+      }finally{
+        setLoading(false)
+      }
+      
+    }
+    getFeedbacks()
+  }, [])
+
+
+  return (
+    <>
+    <div className="w-full h-full bg-[#242724]">
+      {info.length > 0 ? (
+        <div className="flex justify-between ">
+          {info.map((info) => (
+            <div key={info._id} className="h-[350px] w-[500px] bg-[#3b3b3a27] shadow-md rounded-md">
+              <p>Email: {info.email}</p>
+              <p>Message: {info.message}</p>
+              <p>Date: {info.date  || "Not set"}</p>
+            </div>
+          ))}
+          {loading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
+        </div>
+      ) : (
+        <div>
+          <p>No feedbacks sent today yet</p>
+        </div>
+      )}
+    </div>
+    </>
+
+  )
+
+}
 
 export default AdminPanel;
