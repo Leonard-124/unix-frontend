@@ -775,7 +775,7 @@ const FeedBacksTab = () => {
   useEffect(() => {
     const getFeedbacks = async() => {
       try{
-        const res = await fetch("http://localhost:3000/api/feedbacks")
+        const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/feedbacks`)
         if (!res.ok) throw new Error(`http error ${res.statusText}`);
         const result =  await res.json()
         setInfo(result)
