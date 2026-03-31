@@ -805,14 +805,14 @@ const FeedBacksTab = () => {
               <p>Date: {info.date  || "Not set"}</p>
             </div>
           ))}
-          {loading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
         </div>
       ) : (
         <div>
           <p>No feedbacks sent today yet</p>
         </div>
       )}
+      {loading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
     </div>
     </>
 
